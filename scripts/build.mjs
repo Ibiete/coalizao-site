@@ -189,7 +189,7 @@ ${header(c)}
       </article>`).join("\n      ")}
     </div>
   </div>
-  <div class="how__ornaments" aria-hidden="true">${img("ornamento-esquerdo", "", { cls: "how__orn-left" })}${img("ornamento-direito", "", { cls: "how__orn-right" })}</div>
+  ${img("rodape-como-atuamos", "", { cls: "band band--how" })}
 </section>
 
 <!-- BLOCO 05 — Recifes do Brasil -->

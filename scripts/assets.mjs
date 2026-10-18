@@ -36,6 +36,8 @@ const MANIFEST = [
   ["icone-articulacao", B("Bloco 4/imagens bloco 4", "icone03.png"), 300],
   ["icone-comunicacao", B("Bloco 4/imagens bloco 4", "icone04.png"), 300],
   ["icone-politicas", B("Bloco 4/imagens bloco 4", "icone05.png"), 300],
+  // rodapé do bloco 4 enviado pelo Shawã em 2026-10-18 (Drive 1nebYJFNKN0tNi5XFhhEOzTZEGRrOWtbi)
+  ["rodape-como-atuamos", B("Bloco 4/imagens bloco 4", "rodape-como-atuamos-v2.png"), 2000],
   // Bloco 5 — Recifes do Brasil
   ["recifes-colagem", B("Bloco 5/imagens bloco 5", "Colagem Tropical de Recife de Coral.png"), 1100],
   ["faixa-litoranea", B("Bloco 5/imagens bloco 5", "Faixa Tropical Litorânea Texturizada.png"), 2000],

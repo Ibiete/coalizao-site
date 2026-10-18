@@ -156,7 +156,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .band--about { margin-top: clamp(24px, 4vw, 40px); }
 
 /* ---------- como atuamos (bloco 04) ---------- */
-.how { padding-top: clamp(40px, 6vw, 72px); padding-bottom: clamp(140px, 16vw, 200px); }
+.how { padding-top: clamp(40px, 6vw, 72px); }
+.band--how { margin-top: clamp(28px, 4vw, 48px); }
 .how__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 14px; }
 h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
 .how-card { display: grid; grid-template-columns: 170px 1fr; gap: 24px; align-items: center; padding: 30px 30px 30px 22px; background: var(--sky-card); border-radius: var(--radius-lg); }
@@ -164,10 +165,6 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
 .how-card__icon { width: 100%; max-width: 170px; margin: 0 auto; }
 .how-card h3 { font-size: clamp(1.45rem, 2.2vw, 1.9rem); margin-bottom: 12px; }
 .how-card p { margin: 0; font-size: 1.03rem; }
-.how__ornaments { position: absolute; left: 0; right: 0; bottom: 0; height: 170px; pointer-events: none; z-index: 1; }
-.how__ornaments::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: var(--navy) url("/assets/img/rodape-oceanico.webp") center bottom / cover no-repeat; }
-.how__orn-left { position: absolute; left: -10px; bottom: 30px; width: clamp(150px, 20vw, 260px); }
-.how__orn-right { position: absolute; right: -10px; bottom: 30px; width: clamp(130px, 17vw, 220px); }
 
 /* ---------- recifes do brasil (bloco 05) ---------- */
 .reefs { padding-bottom: clamp(56px, 8vw, 96px); }
@@ -489,10 +486,7 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
   .how__grid, .reefs__cards, .mvp__grid, .values__grid, .actions__grid, .contact-form, .checks { grid-template-columns: 1fr; }
   .how-card, .how-card--wide { grid-template-columns: 96px 1fr; gap: 16px; padding: 22px 18px 22px 12px; }
   .how-card h3 { font-size: 1.32rem; }
-  .how { padding-bottom: 150px; }
-  .how__orn-left { width: 150px; }
-  .how__orn-right { width: 120px; }
-  .reef-card { grid-template-columns: 88px 1fr; }
+      .reef-card { grid-template-columns: 88px 1fr; }
   .reef-card__icon { width: 88px; }
 
   .stats { grid-template-columns: 1fr; }
