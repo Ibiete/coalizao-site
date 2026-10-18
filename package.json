@@ -1,0 +1,13 @@
+{
+  "name": "coalizao-site",
+  "private": true,
+  "type": "module",
+  "description": "Site da Coalizão Corais do Brasil / Brazilian Coral Reef Coalition (PT/EN) — estático, servido por nginx",
+  "scripts": {
+    "assets": "node scripts/assets.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}
