@@ -18,7 +18,22 @@
     document.body.style.overflow = open ? "hidden" : "";
   };
   toggle?.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
-  menu?.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+  // Com o menu aberto a página fica travada (overflow hidden); se o navegador
+  // pular para a âncora antes de destravar, a rolagem para no meio do caminho.
+  // Então: fecha o menu, destrava e só depois rola até o destino.
+  menu?.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+    const url = new URL(link.href, location.href);
+    const target = url.pathname === location.pathname && url.hash ? document.querySelector(url.hash) : null;
+    setMenu(false);
+    if (!target) return;
+    e.preventDefault();
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      history.pushState(null, "", url.hash);
+    });
+  });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
   window.matchMedia("(min-width: 1025px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
 
