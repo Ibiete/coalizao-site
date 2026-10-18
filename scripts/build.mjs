@@ -122,9 +122,10 @@ ${noindex ? '<meta name="robots" content="noindex">' : ""}
 <meta property="og:image" content="${ORIGIN}${c.ogImage}">
 <meta property="og:locale" content="${c.ogLocale}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512.png">
-<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png?v=2">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
 <link rel="preload" href="/assets/fonts/signika-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/nunitosans-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/fonts.css?v=${VERSION}">

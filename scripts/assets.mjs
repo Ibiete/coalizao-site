@@ -3,7 +3,7 @@
 // rodar de novo só quando a arte mudar:
 //   SRC=~/coralis-work/drive npm run assets
 import sharp from "sharp";
-import { mkdirSync, existsSync } from "node:fs";
+import { mkdirSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { homedir } from "node:os";
 
@@ -136,14 +136,27 @@ for (const [name, src, width] of MANIFEST) {
 }
 console.log(`TOTAL ${(total / 1024 / 1024).toFixed(2)} MB em ${MANIFEST.length} imagens`);
 
-// Ícones da aba e de compartilhamento a partir do símbolo do logo (parte circular à esquerda)
-const logo = join(SRC, "LOGO PT EN/Logo PT transparente.png");
-const meta = await sharp(logo).metadata();
-const symbolBuf = await sharp(logo).extract({ left: 0, top: 0, width: meta.height, height: meta.height }).png().toBuffer();
-const symbol = sharp(await sharp(symbolBuf).trim().png().toBuffer());
-await symbol.clone().resize(512, 512, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toFile(join(OUT, "favicon-512.png"));
-await symbol.clone().resize(180, 180, { fit: "contain", background: { r: 247, g: 241, b: 227, alpha: 1 } }).png().toFile(join(OUT, "apple-touch-icon.png"));
-await symbol.clone().resize(48, 48, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toFile(join(OUT, "favicon-48.png"));
+// Ícones da aba / tela inicial a partir do símbolo oficial (brand/simbolo.png,
+// enviado pelo Shawã em 2026-10-18 — fica no repo por ser pequeno).
+const symbolSrc = new URL("../brand/simbolo.png", import.meta.url).pathname;
+const symbol = sharp(await sharp(symbolSrc).trim({ threshold: 1 }).png().toBuffer());
+const clear = { r: 0, g: 0, b: 0, alpha: 0 };
+const icon = (size, background = clear, pad = 0) =>
+  symbol.clone().resize(size - 2 * pad, size - 2 * pad, { fit: "contain", background: clear })
+    .extend({ top: pad, bottom: pad, left: pad, right: pad, background }).flatten(background.alpha ? { background } : false).png();
+for (const size of [16, 32, 48, 192, 512]) await icon(size).toFile(join(OUT, `favicon-${size}.png`));
+// iOS não aceita transparência no ícone da tela inicial: fundo creme do site
+await icon(180, { r: 247, g: 242, b: 231, alpha: 1 }, 14).toFile(join(OUT, "apple-touch-icon.png"));
+// favicon.ico (PNG embutido em ICO: 16, 32 e 48 px) para navegadores que pedem /favicon.ico
+const pngs = await Promise.all([16, 32, 48].map((n) => icon(n).toBuffer()));
+const header = Buffer.alloc(6); header.writeUInt16LE(0, 0); header.writeUInt16LE(1, 2); header.writeUInt16LE(pngs.length, 4);
+let offset = 6 + 16 * pngs.length;
+const entries = pngs.map((buf, i) => {
+  const n = [16, 32, 48][i]; const e = Buffer.alloc(16);
+  e.writeUInt8(n, 0); e.writeUInt8(n, 1); e.writeUInt16LE(1, 4); e.writeUInt16LE(32, 6);
+  e.writeUInt32LE(buf.length, 8); e.writeUInt32LE(offset, 12); offset += buf.length; return e;
+});
+writeFileSync(new URL("../site/favicon.ico", import.meta.url).pathname, Buffer.concat([header, ...entries, ...pngs]));
 // Imagem de compartilhamento (Open Graph) 1200x630: o hero de referência
 await sharp(B("Bloco 1 e 2", "imagem completa bloco 1 e 2.png")).resize(1200, 630, { fit: "cover", position: "top" }).jpeg({ quality: 82 }).toFile(join(OUT, "og-pt.jpg"));
 console.log("favicons + og ok");
