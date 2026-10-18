@@ -204,7 +204,6 @@ ${header(c)}
       </div>
     </div>
     <div class="reefs__media">
-      ${img("coral-grande", "", { cls: "reefs__coral" })}
       ${img("recifes-colagem", r.imageAlt, { cls: "reefs__collage" })}
     </div>
   </div>

@@ -42,7 +42,6 @@ const MANIFEST = [
   ["recifes-colagem", B("Bloco 5/imagens bloco 5", "Colagem Tropical de Recife de Coral.png"), 1100],
   ["faixa-litoranea", B("Bloco 5/imagens bloco 5", "Faixa Tropical Litorânea Texturizada.png"), 2000],
   ["icone-biodiversidade", B("Bloco 5/imagens bloco 5", G("10_43_29")), 260],
-  ["coral-grande", B("Bloco 5/imagens bloco 5", G("10_43_35")), 420],
   ["icone-seguranca-alimentar", B("Bloco 5/imagens bloco 5", G("10_43_40")), 260],
   ["icone-economia", B("Bloco 5/imagens bloco 5", G("10_43_45")), 260],
   ["icone-protecao-costeira", B("Bloco 5/imagens bloco 5", G("10_43_50")), 260],
