@@ -182,9 +182,10 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
 
 /* ---------- números + você sabia (blocos 06-07) ---------- */
 .numbers { padding-bottom: 32px; }
-.numbers__panel { position: relative; display: grid; grid-template-columns: 1.35fr 0.65fr; background: #fdfaf2; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
-.numbers__content { padding: clamp(28px, 4vw, 48px); position: relative; z-index: 2; }
-.numbers__image { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+.numbers__panel { position: relative; background: #fdfaf2; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+.numbers__content { padding: clamp(28px, 4vw, 48px); position: relative; z-index: 2; max-width: 66%; }
+/* imagem inteira, na altura do painel, ancorada à direita: avança para a esquerda e passa por trás da caixa azul (Shawã, 2026-10-18) */
+.numbers__image { position: absolute; top: 0; right: -12px; height: 100%; width: auto; max-width: none; z-index: 1; }
 .stats { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--navy); border-radius: var(--radius); padding: 10px 6px; margin: 18px 0 16px; }
 .stat { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center; padding: 22px 20px; color: #fff; }
 .stat:nth-child(odd) { border-right: 1px solid rgb(255 255 255 / 0.25); }
@@ -447,8 +448,10 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
   .about__grid, .reefs__grid, .governance__grid, .results__grid, .contact__grid { grid-template-columns: 1fr; }
   .about__photo { margin: 0 auto; }
   .reefs__media { max-width: 560px; margin: 0 auto; padding-top: 0; }
-    .numbers__panel { grid-template-columns: 1fr; }
-  .numbers__image { max-height: 340px; object-position: center 40%; order: -1; }
+    .numbers__panel { display: flex; flex-direction: column; }
+  .numbers__content { max-width: none; }
+  /* no celular/tablet: um pouco maior que o card e deslocada p/ a direita — esconde a borda picotada da direita */
+  .numbers__image { position: relative; top: auto; right: auto; order: -1; width: 118%; max-width: none; height: clamp(300px, 60vw, 380px); object-fit: cover; object-position: center 38%; }
   .video-panel { grid-template-columns: 1fr; }
   .mvp__head { grid-template-columns: 1fr; }
   .mvp__island { max-width: 360px; margin: -10px 0 10px auto; }
