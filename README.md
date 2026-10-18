@@ -33,6 +33,11 @@ SRC=~/caminho/da/pasta/do/drive npm run assets && npm run build
 git commit -am "..." && git push   # CI publica ghcr.io/ibiete/coalizao-site:latest
 ```
 
+PDFs para download (BrandBook, Guia de Comunicação...) **não ficam no git nem na imagem**: ficam em
+`/docker/coalizao-site/docs/` na VPS (volume montado em `/docs/`). Para publicar um novo: copiar o PDF
+para essa pasta e apontar o `href` do card/rodapé em `content/*.mjs`. PDF muito pesado: comprimir antes
+(ex.: `gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook ...`).
+
 Deploy na VPS (depois do CI verde):
 
 ```bash
@@ -42,6 +47,6 @@ ssh hostinger-vps "cd /docker/coalizao-site && docker compose pull && docker com
 ## Pendências de conteúdo (marcadas no próprio site)
 
 - Comitê Estratégico-Deliberativo e organizações da rede: logos "a confirmar".
-- Materiais e downloads: PDFs, tamanhos, versões e datas ainda não fornecidos (botões ficam em estado "em preparação").
+- Materiais e downloads: BrandBook e Guia de Comunicação publicados; os demais PDFs ainda não fornecidos (botões em estado "em preparação").
 - LinkedIn e YouTube: links "a confirmar". Vídeo institucional: em produção.
 - Política de Privacidade: texto-base, precisa de revisão da Coalizão/Bloom.
