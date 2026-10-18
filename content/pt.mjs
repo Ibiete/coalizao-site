@@ -151,7 +151,7 @@ export default {
       { label: "Eixo 4 · GT 4", title: "Mobilização de Investimentos", color: "sky", icon: "icone-eixo-investimentos", text: "Articulamos a mobilização de recursos públicos e privados para a conservação e restauração dos corais, conectando financiadores e quem executa na ponta." },
     ],
     transversal: { label: "Eixo transversal · GT 5", title: "Monitoramento", icon: "icone-eixo-monitoramento", text: "Estabelecemos e monitoramos indicadores de efetividade das ações de conservação, articulando um espaço de confiança para o compartilhamento de dados e fortalecendo projetos e redes já existentes e as que vierem a ser criadas." },
-    imageAlt: "Ilustração de pescador lançando uma rede de pesca no mar",
+    imageAlt: "Ilustração do globo terrestre com ondas que chegam ao litoral do Brasil",
   },
 
   gts: {

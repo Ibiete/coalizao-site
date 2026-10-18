@@ -62,7 +62,8 @@ const MANIFEST = [
   ["divisor-onda-coral", B("Bloco 9 e 10/imagens bloco 9 e 10", G("11_58_34")), 2000],
   ["tartaruga", B("Bloco 9 e 10/imagens bloco 9 e 10", G("11_58_39")), 2000],
   // Bloco 11 — Nossas ações
-  ["pescador-rede", B("Bloco 11/imagens bloco 11", G("20_41_29")), 700],
+  // topo do bloco 11 trocado pelo Shawã em 2026-10-18 (Drive 1zBzwEUGmBvWu3jCFQ3RgdWriY13gT9li) — substitui o pescador
+  ["acoes-global-local", B("Bloco 11/imagens bloco 11", "acoes-global-local.png"), 760],
   ["icone-eixo-ameacas", B("Bloco 11/imagens bloco 11", G("20_41_41")), 280],
   ["icone-eixo-protecao", B("Bloco 11/imagens bloco 11", G("20_41_45")), 280],
   ["icone-eixo-restauracao", B("Bloco 11/imagens bloco 11", G("20_41_49")), 280],
@@ -117,6 +118,22 @@ const MANIFEST = [
   ["parceiro-bloom", join(PARTNERS, "bloom-prancheta1.png"), 540],
 ];
 
+// Faixas que encostam no bloco seguinte: a base precisa ser opaca. O trim às vezes
+// deixa alguns px transparentes embaixo (pixel quase invisível perdido) → margem
+// branca entre blocos. Corta a base até a primeira linha ≥99,5% opaca (alpha ≥250).
+// praia-limpeza fica de fora: é uma cena com bordas irregulares, não uma faixa sólida
+const SOLID_BOTTOM = new Set(["rodape-oceanico", "rodape-como-atuamos", "faixa-litoranea", "divisor-onda-coral", "recife-faixa-colorida", "recife-faixa-baixa"]);
+async function cropTransparentBottom(buf) {
+  const { data, info } = await sharp(buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  let bottom = info.height - 1;
+  for (; bottom > info.height / 2; bottom--) {
+    let transparent = 0;
+    for (let x = 0; x < info.width; x++) if (data[(bottom * info.width + x) * 4 + 3] < 250) transparent++;
+    if (transparent / info.width <= 0.005) break;
+  }
+  return sharp(buf).extract({ left: 0, top: 0, width: info.width, height: bottom + 1 }).png().toBuffer();
+}
+
 let total = 0;
 for (const [name, src, width] of MANIFEST) {
   if (!existsSync(src)) {
@@ -128,7 +145,8 @@ for (const [name, src, width] of MANIFEST) {
   // As artes vêm com muita margem transparente em volta — recortar deixa o
   // posicionamento e o tamanho controlados só pelo CSS. Fotos (sem alpha) ficam como estão.
   const { hasAlpha } = await sharp(src).metadata();
-  const base = hasAlpha ? await sharp(src).trim({ threshold: 1 }).png().toBuffer() : src;
+  let base = hasAlpha ? await sharp(src).trim({ threshold: 1 }).png().toBuffer() : src;
+  if (SOLID_BOTTOM.has(name)) base = await cropTransparentBottom(base);
   const info = await sharp(base)
     .resize({ width, withoutEnlargement: true })
     .webp({ quality: name.startsWith("hero-fundo") || name.includes("foto") || name.includes("colagem") || name.includes("veleiro") ? 80 : 86, effort: 6, alphaQuality: 90 })

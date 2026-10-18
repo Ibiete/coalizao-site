@@ -93,7 +93,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .text-cta__play { display: inline-grid; place-items: center; width: 40px; height: 40px; border: 3px solid var(--coral); border-radius: 50%; color: var(--coral); }
 .text-cta__play svg { width: 22px; height: 22px; }
 
-.band { position: relative; z-index: 1; width: 100%; height: auto; margin-top: clamp(32px, 5vw, 56px); margin-bottom: calc(-1 * clamp(56px, 8vw, 96px)); pointer-events: none; }
+/* margin-bottom = padding da seção + 2px: a faixa avança 2px sobre o bloco seguinte e some a linha de arredondamento */
+.band { position: relative; z-index: 1; width: 100%; height: auto; margin-top: clamp(32px, 5vw, 56px); margin-bottom: calc(-1 * clamp(56px, 8vw, 96px) - 2px); pointer-events: none; }
 
 .underline-coral { display: inline-block; position: relative; padding-bottom: 10px; }
 .underline-coral::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; border-radius: 4px; background: var(--coral); }
@@ -246,7 +247,7 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
 .split-head { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(20px, 4vw, 48px); align-items: center; margin-bottom: 18px; }
 .split-head .lead { max-width: 720px; }
 .split-head__art { width: 100%; margin-left: auto; }
-.actions__fisher { max-width: 360px; }
+.actions__art { max-width: 380px; }
 .gts__people { max-width: 480px; }
 .network__boat { max-width: 520px; }
 .materials__docs { max-width: 400px; }
@@ -510,11 +511,17 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
   .video-panel .btn { width: 100%; }
 
   .split-head { grid-template-columns: 1fr; }
-  .split-head__art { max-width: 300px; margin: 0 auto 0 0; }
+  /* ilustrações de topo de bloco centralizadas no celular (Shawã pediu em Grupos de Trabalho e Materiais; aplicado a todas, 2026-10-18) */
+  .split-head__art { max-width: 300px; margin: 8px auto 0; }
   .axis-card { grid-template-columns: 76px 1fr; gap: 14px; padding: 28px 20px 24px 14px; }
   .axis-card__icon { width: 76px; margin-top: 20px; }
-  .axis-card--transversal { grid-template-columns: 1fr; }
-  .axis-card--transversal .axis-card__icon { width: 96px; border-right: 0; padding: 0; }
+  /* Monitoramento no celular: ícone ao lado do rótulo + título, texto embaixo em largura total */
+  .axis-card.axis-card--transversal { grid-template-columns: 72px 1fr; column-gap: 16px; row-gap: 0; align-items: center; padding: 26px 20px; }
+  .axis-card--transversal > div { display: contents; }
+  .axis-card.axis-card--transversal .axis-card__icon { grid-column: 1; grid-row: 1 / span 2; margin: 0; width: 72px; border-right: 0; padding: 0; align-self: center; }
+  .axis-card--transversal .axis-card__label { grid-column: 2; grid-row: 1; align-self: end; }
+  .axis-card--transversal h3 { grid-column: 2; grid-row: 2; align-self: start; margin-bottom: 0; }
+  .axis-card--transversal p:last-child { grid-column: 1 / -1; grid-row: 3; margin-top: 16px; }
 
   .gt-card { grid-template-columns: 1fr; }
   .gt-card__art { max-height: 150px; margin: 0 auto; }

@@ -150,7 +150,7 @@ export default {
       { label: "Pillar 4 · WG 4", title: "Mobilizing Investment", color: "sky", icon: "icone-eixo-investimentos", text: "We help mobilize public and private resources for coral conservation and restoration, connecting funders with those implementing work on the ground." },
     ],
     transversal: { label: "Cross-cutting pillar · WG 5", title: "Monitoring", icon: "icone-eixo-monitoramento", text: "We establish and monitor indicators of conservation effectiveness, creating a trusted space for data sharing and strengthening existing projects and networks as well as those that may be established in the future." },
-    imageAlt: "Illustration of a fisherman casting a net into the sea",
+    imageAlt: "Illustration of the globe with waves reaching the coast of Brazil",
   },
 
   gts: {

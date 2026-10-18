@@ -290,7 +290,7 @@ ${header(c)}
         ${title(ac.h2, "h2", "section-title").replace("<h2", '<h2 id="actions-title"')}
         <p class="lead">${esc(ac.intro)}</p>
       </div>
-      ${img("pescador-rede", ac.imageAlt, { cls: "split-head__art actions__fisher" })}
+      ${img("acoes-global-local", ac.imageAlt, { cls: "split-head__art actions__art" })}
     </div>
     <div class="actions__grid">
       ${ac.cards.map((k) => `<article class="axis-card axis-card--${k.color}">${img(k.icon, "", { cls: "axis-card__icon" })}<div><p class="axis-card__label">${esc(k.label)}</p><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></div></article>`).join("\n      ")}
