@@ -30,10 +30,27 @@
     if (!target) return;
     e.preventDefault();
     requestAnimationFrame(() => {
-      target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      scrollToTarget(target);
       history.pushState(null, "", url.hash);
     });
   });
+
+  // Rolagem suave longa (ex.: do topo até o formulário no celular) às vezes
+  // para antes do destino — ao terminar, confere e completa sem animação.
+  function scrollToTarget(target) {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    if (reduce) return;
+    let done = false;
+    const settle = () => {
+      if (done) return;
+      done = true;
+      const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      if (Math.abs(target.getBoundingClientRect().top - offset) > 4) target.scrollIntoView({ behavior: "auto" });
+    };
+    if ("onscrollend" in window) window.addEventListener("scrollend", settle, { once: true });
+    setTimeout(settle, 1600);
+  }
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
   window.matchMedia("(min-width: 1025px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
 

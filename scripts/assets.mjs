@@ -22,7 +22,8 @@ const MANIFEST = [
   ["logo-en", join(SRC, "LOGO PT EN/logo-EN-transparente.png"), 640],
   // Blocos 1-2 — cabeçalho e hero
   ["divisor-ondulado", B("Bloco 1 e 2/imagens bloco 1 e 2", "Divisor Ondulado Azul e Marfim.png"), 2000],
-  ["hero-moldura", B("Bloco 1 e 2/imagens bloco 1 e 2", "Moldura Marinha em Aquarela.png"), 1448],
+  // v2 enviada pelo Shawã em 2026-10-18 (Drive 1-V1xwrA3tN2U1RQgjEk8wLbwyTZvDyOT), substitui a original
+  ["hero-moldura", B("Bloco 1 e 2/imagens bloco 1 e 2", "Moldura Marinha em Aquarela v2.png"), 1448],
   ["tres-ondas", B("Bloco 1 e 2/imagens bloco 1 e 2", "Três Ondas Aqua Texturizadas.png"), 160],
   ["hero-fundo", B("Bloco 1 e 2/imagens bloco 1 e 2", "imagem de fundo.png"), 1448],
   // Bloco 3 — Quem somos
