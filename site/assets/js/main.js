@@ -98,7 +98,9 @@
     try {
       const res = await fetch(form.dataset.endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "x-submission-id": crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) },
+        // Sem x-submission-id: o CORS do NAIIAN ONE não libera esse cabeçalho
+        // (o botão já fica desabilitado durante o envio, evitando duplicidade).
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
