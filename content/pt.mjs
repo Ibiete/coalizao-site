@@ -44,6 +44,7 @@ export default {
     network: "rede",
     materials: "materiais",
     contact: "contato",
+    form: "formulario",
   },
 
   hero: {

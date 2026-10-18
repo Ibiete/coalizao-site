@@ -57,7 +57,7 @@ function header(c, { home = true } = {}) {
     <nav class="site-nav" id="menu" data-menu aria-label="Menu">
       <ul class="site-nav__list">${navItems}</ul>
       <div class="site-nav__actions">
-        <a class="btn btn--coral btn--sm" href="${href("#" + c.ids.contact)}">${esc(c.navCta)}</a>
+        <a class="btn btn--coral btn--sm" href="${href("#" + c.ids.form)}" data-participation="0">${esc(c.navCta)}</a>
         <span class="rays" aria-hidden="true"><i></i><i></i><i></i></span>
         <div class="lang-switch" role="group" aria-label="${esc(c.langSwitchLabel)}">
           <a href="/" lang="pt-BR" ${c.lang === "pt-BR" ? 'aria-current="true"' : ""}>PT</a><span aria-hidden="true">|</span><a href="/en/" lang="en" ${c.lang === "en" ? 'aria-current="true"' : ""}>EN</a>
@@ -154,7 +154,7 @@ ${header(c)}
     ${title(h.h1, "h1", "hero__title").replace("<h1", '<h1 id="hero-title"')}
     <p class="hero__sub">${esc(h.sub)}</p>
     <div class="hero__ctas">
-      <a class="btn btn--coral" href="#${id.contact}" data-participation="0">${esc(h.cta1)} ${arrow}</a>
+      <a class="btn btn--coral" href="#${id.form}" data-participation="0">${esc(h.cta1)} ${arrow}</a>
       <a class="btn btn--ghost" href="#${id.about}">${esc(h.cta2)} ${arrow}</a>
     </div>
     <p class="hero__aligned">${img("tres-ondas", "", { cls: "hero__waves-icon", eager: true })}<span>${h.aligned}</span></p>
@@ -244,7 +244,7 @@ ${header(c)}
       <div class="video-panel__text">
         ${eyebrow(v.eyebrow, { light: true })}
         ${title(v.h2, "h2", "section-title section-title--light").replace("<h2", '<h2 id="video-title"')}
-        <a class="btn btn--yellow" href="#${id.contact}" data-participation="0">${esc(v.cta)} ${arrow}</a>
+        <a class="btn btn--yellow" href="#${id.form}" data-participation="0">${esc(v.cta)} ${arrow}</a>
       </div>
       <figure class="video-player">
         <button type="button" class="video-player__btn" aria-label="${esc(v.playLabel)}" data-video-soon>
@@ -337,7 +337,7 @@ ${header(c)}
         ${gv.steps.map((s, i) => `<li>${img(`passo-${i + 1}`, String(i + 1), { cls: "steps__num" })}<div><h4>${esc(s.title)}</h4><p>${esc(s.text)}</p></div></li>`).join("\n        ")}
       </ol>
       <p class="steps-card__note">${esc(gv.note)}</p>
-      <a class="btn btn--navy" href="#${id.contact}" data-participation="0">${esc(gv.cta)} ${arrow}</a>
+      <a class="btn btn--navy" href="#${id.form}" data-participation="0">${esc(gv.cta)} ${arrow}</a>
     </div>
   </div>
 </section>
@@ -379,7 +379,7 @@ ${header(c)}
     <div class="join-band">
       ${img("coral-eyebrow", "", { cls: "join-band__coral join-band__coral--left" })}
       <p><strong>${esc(nw.ctaText)}</strong> <span class="t-sky">${esc(nw.ctaHighlight)}</span></p>
-      <a class="btn btn--yellow" href="#${id.contact}" data-participation="0">${esc(nw.ctaButton)} ${arrow}</a>
+      <a class="btn btn--yellow" href="#${id.form}" data-participation="0">${esc(nw.ctaButton)} ${arrow}</a>
       ${img("coral-laranja", "", { cls: "join-band__coral join-band__coral--right" })}
     </div>
   </div>
@@ -426,7 +426,7 @@ ${header(c)}
       </ul>
       ${img("cardume", "", { cls: "contact__fish" })}
     </div>
-    <form class="contact-form" data-contact-form data-endpoint="${FORM_ENDPOINT}" data-lang="${c.lang}" novalidate>
+    <form class="contact-form" id="${id.form}" data-contact-form data-endpoint="${FORM_ENDPOINT}" data-lang="${c.lang}" novalidate>
       <div class="field"><label for="f-name">${esc(fm.name)} ${req}</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="${esc(fm.namePh)}" required maxlength="160"></div>
       <div class="field"><label for="f-email">${esc(fm.email)} ${req}</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="${esc(fm.emailPh)}" required maxlength="200"></div>
       <div class="field"><label for="f-org">${esc(fm.org)}</label><input id="f-org" name="organization" type="text" autocomplete="organization" placeholder="${esc(fm.orgPh)}" maxlength="200"></div>
