@@ -221,7 +221,10 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
 
 /* ---------- missão, visão, propósito + valores (blocos 09-10) ---------- */
 .mvp { padding-bottom: 0; }
-.band--to-navy { margin-bottom: -16px; position: relative; z-index: 3; margin-top: clamp(24px, 4vw, 48px); }
+/* emenda Missão → Valores: a borda de baixo da arte é irregular/transparente e deixava o creme aparecer;
+   preenche por trás com o azul da própria arte, desce a faixa e o bloco Valores começa nesse azul (Shawã, 2026-10-18) */
+.band--to-navy { margin-bottom: calc(-1 * clamp(12px, 3vw, 44px)); position: relative; z-index: 3; margin-top: clamp(24px, 4vw, 48px); background: linear-gradient(to bottom, transparent 74%, #0b3560 74%); }
+.values { background: linear-gradient(to bottom, #0b3560 0, #0b3560 40px, var(--navy-deep) 220px); }
 .mvp__head { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 24px; }
 .mvp__island { width: 100%; max-width: 520px; margin-left: auto; margin-bottom: 10px; }
 .mvp__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 10px; }
@@ -232,7 +235,7 @@ h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
 .mvp-card h3 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin-bottom: 12px; }
 .mvp-card p { margin: 0; font-size: 1.08rem; }
 
-.values { padding-top: clamp(28px, 4vw, 48px); padding-bottom: clamp(56px, 8vw, 96px); }
+.values { padding-top: clamp(56px, 6vw, 80px); padding-bottom: clamp(56px, 8vw, 96px); }
 .values__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
 .value-card { border: 1.5px solid rgb(159 214 244 / 0.6); border-radius: var(--radius); padding: 30px 32px; background: rgb(255 255 255 / 0.03); }
 .value-card h3 { color: #f6d35a; font-size: clamp(1.7rem, 2.6vw, 2.15rem); margin-bottom: 12px; }
