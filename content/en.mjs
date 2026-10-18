@@ -229,8 +229,8 @@ export default {
     docs: [
       { icon: "doc-governanca", title: "Governance Policy", text: "Structure, roles, participation rules and conduct of the Coalition.", meta: "PDF · [size] · Version [n] · [date]", cta: "Download" },
       { icon: "doc-adesao", title: "Membership Agreement", text: "Document to formalize your organization's entry into the Impact Network.", meta: "PDF · [size] · Version [n] · [date]", cta: "Download" },
-      { icon: "doc-brandbook", title: "Brand Book", text: "Logo, colors, typography and the Cordel de Corais visual style.", meta: "PDF · [size] · Version [n] · [date]", cta: "Download" },
-      { icon: "doc-guia", title: "Communication Guide", text: "Voice, tone and guidelines for communicating on behalf of the Coalition.", meta: "PDF · [size] · Version 1.0 · [date]", cta: "Download" },
+      { icon: "doc-brandbook", title: "Brand Book", text: "Logo, colors, typography and the Cordel de Corais visual style.", meta: "PDF in Portuguese · 11.6 MB · Version 03 · Feb 2026", cta: "Download", href: "/docs/brandbook-coalizao-corais-do-brasil-v03.pdf" },
+      { icon: "doc-guia", title: "Communication Guide", text: "Voice, tone and guidelines for communicating on behalf of the Coalition.", meta: "PDF in Portuguese · 0.9 MB · Version 1.0 · Feb 2026", cta: "Download", href: "/docs/guia-de-comunicacao-coalizao-corais-do-brasil-v1.pdf" },
       { icon: "doc-oficina", title: "2023 National Workshop Report", text: "Record of the meeting that helped lay the foundations of the Coalition.", meta: "PDF · [size] · [date]", cta: "Download" },
       { icon: "doc-publicacao", kicker: "Publication", title: "Oceano sem mistérios: Desvendando os recifes de corais [Ocean Without Mysteries: Unveiling Coral Reefs]", text: "The value of coastal protection and tourism associated with reefs in Northeast Brazil, presented through infographics. Fundação Grupo Boticário in partnership with Bloom Ocean.", meta: "PDF · [link to be confirmed]", cta: "Access" },
       { icon: "doc-anual", title: "2026 Annual Report", text: "Results, indicators and lessons from the first year of governance.", meta: "Expected by the end of 2026.", cta: "Coming soon", soon: true },
@@ -276,8 +276,8 @@ export default {
     navTitle: "Navigation",
     links: [
       { label: "Privacy Policy", href: "/en/privacy-policy/" },
-      { label: "Brand Book", href: "#resources" },
-      { label: "Communication Guide", href: "#resources" },
+      { label: "Brand Book", href: "/docs/brandbook-coalizao-corais-do-brasil-v03.pdf" },
+      { label: "Communication Guide", href: "/docs/guia-de-comunicacao-coalizao-corais-do-brasil-v1.pdf" },
       { label: "Resources and downloads", href: "#resources" },
     ],
     ombudsTitle: "Ombudsman",

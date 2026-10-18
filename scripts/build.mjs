@@ -83,7 +83,7 @@ function footer(c, { home = true } = {}) {
     </div>
     <div class="site-footer__nav">
       <p class="site-footer__title">${esc(f.navTitle)}</p>
-      <ul>${f.links.map((l) => `<li><a href="${href(l.href)}">${esc(l.label)}</a></li>`).join("")}</ul>
+      <ul>${f.links.map((l) => `<li><a href="${href(l.href)}"${l.href.endsWith(".pdf") ? ' target="_blank" rel="noopener" type="application/pdf"' : ""}>${esc(l.label)}</a></li>`).join("")}</ul>
     </div>
     <div class="site-footer__ombuds">
       <p class="site-footer__title">${esc(f.ombudsTitle)}</p>
@@ -399,7 +399,9 @@ ${header(c)}
           <h3>${esc(d.title)}</h3>
           <p>${esc(d.text)}</p>
           <p class="doc-card__meta">${esc(d.meta)}</p>
-          <span class="btn btn--navy btn--xs${d.soon ? " btn--muted" : ""}" aria-disabled="true" title="${esc(d.soon ? d.cta : mt.pendingTitle)}">${esc(d.cta)}</span>
+          ${d.href
+            ? `<a class="btn btn--navy btn--xs" href="${d.href}" target="_blank" rel="noopener" type="application/pdf">${esc(d.cta)}</a>`
+            : `<span class="btn btn--navy btn--xs${d.soon ? " btn--muted" : ""}" aria-disabled="true" title="${esc(d.soon ? d.cta : mt.pendingTitle)}">${esc(d.cta)}</span>`}
         </div>
       </article>`).join("\n      ")}
     </div>

@@ -230,8 +230,8 @@ export default {
     docs: [
       { icon: "doc-governanca", title: "Política de Governança", text: "Estrutura, papéis, regras de participação e conduta da Coalizão.", meta: "PDF · [tamanho] · Versão [n] · [data]", cta: "Baixar" },
       { icon: "doc-adesao", title: "Termo de Adesão", text: "Documento para formalizar a entrada da sua organização na Rede de Impacto.", meta: "PDF · [tamanho] · Versão [n] · [data]", cta: "Baixar" },
-      { icon: "doc-brandbook", title: "BrandBook", text: "Logomarca, cores, tipografia e o estilo Cordel de Corais.", meta: "PDF · [tamanho] · Versão [n] · [data]", cta: "Baixar" },
-      { icon: "doc-guia", title: "Guia de Comunicação", text: "Voz, tom e diretrizes para comunicar em nome da Coalizão.", meta: "PDF · [tamanho] · Versão 1.0 · [data]", cta: "Baixar" },
+      { icon: "doc-brandbook", title: "BrandBook", text: "Logomarca, cores, tipografia e o estilo Cordel de Corais.", meta: "PDF · 11,6 MB · Versão 03 · fev. 2026", cta: "Baixar", href: "/docs/brandbook-coalizao-corais-do-brasil-v03.pdf" },
+      { icon: "doc-guia", title: "Guia de Comunicação", text: "Voz, tom e diretrizes para comunicar em nome da Coalizão.", meta: "PDF · 0,9 MB · Versão 1.0 · fev. 2026", cta: "Baixar", href: "/docs/guia-de-comunicacao-coalizao-corais-do-brasil-v1.pdf" },
       { icon: "doc-oficina", title: "Relatório da Oficina Nacional 2023", text: "Registro do encontro que ajudou a construir as bases da Coalizão.", meta: "PDF · [tamanho] · [data]", cta: "Baixar" },
       { icon: "doc-publicacao", kicker: "Publicação", title: "Oceano sem mistérios: Desvendando os recifes de corais", text: "O valor da proteção costeira e do turismo ligados aos recifes do Nordeste, em infográficos. Fundação Grupo Boticário em parceria com a Bloom Ocean.", meta: "PDF · [link a confirmar]", cta: "Acessar" },
       { icon: "doc-anual", title: "Relatório anual 2026", text: "Resultados, indicadores e aprendizados do primeiro ano de governança.", meta: "Previsto para o fim de 2026.", cta: "Em breve", soon: true },
@@ -277,8 +277,8 @@ export default {
     navTitle: "Navegação",
     links: [
       { label: "Política de Privacidade", href: "/politica-de-privacidade/" },
-      { label: "BrandBook", href: "#materiais" },
-      { label: "Guia de Comunicação", href: "#materiais" },
+      { label: "BrandBook", href: "/docs/brandbook-coalizao-corais-do-brasil-v03.pdf" },
+      { label: "Guia de Comunicação", href: "/docs/guia-de-comunicacao-coalizao-corais-do-brasil-v1.pdf" },
       { label: "Materiais e downloads", href: "#materiais" },
     ],
     ombudsTitle: "Ouvidoria",
