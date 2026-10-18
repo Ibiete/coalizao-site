@@ -129,7 +129,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; z-index: -2; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(19 37 79 / 0.97) 0%, rgb(19 37 79 / 0.9) 34%, rgb(19 37 79 / 0.45) 58%, rgb(19 37 79 / 0.05) 80%); }
 .hero__frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; z-index: 0; }
-.hero__content { padding-top: clamp(64px, 9vw, 110px); padding-bottom: clamp(130px, 16vw, 200px); max-width: calc(var(--container) + 2 * var(--gutter)); }
+/* recuo e respiro medidos na moldura: borda lateral ≈7% da largura até 70% da altura; abaixo disso o coral cresce até ~16% */
+.hero__content { padding-left: max(var(--gutter), calc(11vw - max(0px, (100vw - var(--container) - 2 * var(--gutter)) / 2))); padding-top: clamp(64px, 9vw, 110px); padding-bottom: clamp(150px, 24vw, 340px); max-width: calc(var(--container) + 2 * var(--gutter)); }
 .hero__content > * { max-width: 720px; }
 .hero__eyebrow { display: flex; align-items: center; gap: 18px; font-family: var(--font-title); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1rem; margin-bottom: 22px; }
 .hero__eyebrow span { padding-bottom: 10px; border-bottom: 3px solid #f2ead0; }
@@ -156,7 +157,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- como atuamos (bloco 04) ---------- */
 .how { padding-top: clamp(40px, 6vw, 72px); padding-bottom: clamp(140px, 16vw, 200px); }
-.how__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 12px; }
+.how__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 14px; }
+h2.eyebrow { line-height: 1.2; letter-spacing: 0.06em; }
 .how-card { display: grid; grid-template-columns: 170px 1fr; gap: 24px; align-items: center; padding: 30px 30px 30px 22px; background: var(--sky-card); border-radius: var(--radius-lg); }
 .how-card--wide { grid-column: 1 / -1; grid-template-columns: 220px 1fr; }
 .how-card__icon { width: 100%; max-width: 170px; margin: 0 auto; }
@@ -476,7 +478,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .hero::before { background: linear-gradient(180deg, rgb(19 37 79 / 0.94) 0%, rgb(19 37 79 / 0.84) 52%, rgb(19 37 79 / 0.35) 82%, rgb(19 37 79 / 0.15) 100%); }
   .hero__frame { display: none; }
   .hero__coral-mobile { display: block; position: absolute; left: -18px; bottom: -6px; width: 120px; z-index: 0; pointer-events: none; }
-  .hero__content { padding-top: 44px; padding-bottom: 150px; }
+  .hero__content { padding-left: var(--gutter); padding-top: 44px; padding-bottom: 150px; }
   .hero__eyebrow { font-size: 0.82rem; gap: 12px; }
   .hero__eyebrow-icon { width: 44px; }
   .hero__ctas { flex-direction: column; align-items: stretch; }

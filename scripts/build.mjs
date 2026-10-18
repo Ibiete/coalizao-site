@@ -36,8 +36,8 @@ function img(name, alt = "", { cls = "", eager = false, sizes } = {}) {
 const title = (parts, tag = "h2", cls = "") =>
   `<${tag}${cls ? ` class="${cls}"` : ""}>${parts.map((p) => (p.c ? `<span class="t-${p.c}">${esc(p.t)}</span>` : `<span>${esc(p.t)}</span>`)).join(" ")}</${tag}>`;
 
-const eyebrow = (text, { icon = false, light = false } = {}) =>
-  `<p class="eyebrow${light ? " eyebrow--light" : ""}">${icon ? img("coral-eyebrow", "", { cls: "eyebrow__icon" }) : ""}<span>${esc(text)}</span></p>`;
+const eyebrow = (text, { icon = false, light = false, tag = "p", id = "" } = {}) =>
+  `<${tag}${id ? ` id="${id}"` : ""} class="eyebrow${light ? " eyebrow--light" : ""}">${icon ? img("coral-eyebrow", "", { cls: "eyebrow__icon" }) : ""}<span>${esc(text)}</span></${tag}>`;
 
 const arrow = `<svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
@@ -181,8 +181,7 @@ ${header(c)}
 <!-- BLOCO 04 — Como atuamos -->
 <section class="section how bg-cream" id="${id.how}" aria-labelledby="how-title">
   <div class="container">
-    ${eyebrow(hw.eyebrow, { icon: true })}
-    ${title(hw.h2, "h2", "section-title").replace("<h2", '<h2 id="how-title"')}
+    ${eyebrow(hw.eyebrow, { icon: true, tag: "h2", id: "how-title" })}
     <div class="how__grid">
       ${hw.cards.map((k) => `<article class="how-card${k.wide ? " how-card--wide" : ""}">
         ${img(k.icon, "", { cls: "how-card__icon" })}

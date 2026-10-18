@@ -71,7 +71,6 @@ export default {
 
   how: {
     eyebrow: "How we work",
-    h2: [{ t: "How we" }, { t: "work", c: "coral" }],
     cards: [
       { icon: "icone-articulacao", title: "Coordination and Governance", text: "We connect and strengthen the work of civil society, academia and the private sector through coordinated action." },
       { icon: "icone-ciencia", title: "Science and Monitoring", text: "We strengthen the scientific foundation and ongoing monitoring that support decision-making." },

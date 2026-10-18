@@ -72,7 +72,6 @@ export default {
 
   how: {
     eyebrow: "Como atuamos",
-    h2: [{ t: "Como" }, { t: "atuamos", c: "coral" }],
     cards: [
       { icon: "icone-articulacao", title: "Articulação e Governança", text: "Conectamos e potencializamos o trabalho da sociedade civil, da academia e do setor privado em uma atuação coordenada." },
       { icon: "icone-ciencia", title: "Ciência e Monitoramento", text: "Fortalecemos a base científica e o monitoramento contínuo que subsidiam a tomada de decisão." },
