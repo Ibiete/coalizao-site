@@ -132,7 +132,6 @@ export default {
 
   values: {
     eyebrow: "Nossos valores",
-    h2: [{ t: "Nossos" }, { t: "valores", c: "yellow" }],
     cards: [
       { title: "Diversidade", text: "Somos um movimento diverso e equitativo, composto por múltiplos atores." },
       { title: "Cooperação", text: "Nossa base é a cooperação de diferentes organizações parceiras em prol do desenvolvimento de soluções sustentáveis e inovadoras para os recifes de coral do Brasil como um objetivo comum." },

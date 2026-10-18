@@ -131,7 +131,6 @@ export default {
 
   values: {
     eyebrow: "Our values",
-    h2: [{ t: "Our" }, { t: "values", c: "yellow" }],
     cards: [
       { title: "Diversity", text: "We are a diverse and equitable movement made up of multiple stakeholders." },
       { title: "Cooperation", text: "Our foundation is cooperation among partner organizations to develop sustainable and innovative solutions for Brazil's coral reefs as a shared goal." },

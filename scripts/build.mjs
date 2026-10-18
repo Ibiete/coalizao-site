@@ -273,8 +273,7 @@ ${header(c)}
 </section>
 <section class="section values bg-navy" id="${id.values}" aria-labelledby="values-title">
   <div class="container">
-    ${eyebrow(vl.eyebrow, { light: true })}
-    ${title(vl.h2, "h2", "section-title section-title--light").replace("<h2", '<h2 id="values-title"')}
+    ${eyebrow(vl.eyebrow, { light: true, tag: "h2", id: "values-title" })}
     <div class="values__grid">
       ${vl.cards.map((k) => `<article class="value-card"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></article>`).join("\n      ")}
     </div>
