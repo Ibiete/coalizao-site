@@ -28,6 +28,12 @@ const MANIFEST = [
   // Hero (aprovados no briefing: coral do eyebrow e ondas do "Alinhada à agenda")
   ["coral-eyebrow", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_18-1")), 120],
   ["tres-ondas", B("Bloco 1 e 2/imagens bloco 1 e 2", "Três Ondas Aqua Texturizadas.png"), 160],
+  // Ícones do "Como atuamos" trazidos da v1 a pedido do Shawã (2026-10-19), exibidos a ~50px
+  ["icone-comunidades", B("Bloco 4/imagens bloco 4", "icone01.png"), 120],
+  ["icone-ciencia", B("Bloco 4/imagens bloco 4", "icone02.png"), 120],
+  ["icone-articulacao", B("Bloco 4/imagens bloco 4", "icone03.png"), 120],
+  ["icone-comunicacao", B("Bloco 4/imagens bloco 4", "icone04.png"), 120],
+  ["icone-politicas", B("Bloco 4/imagens bloco 4", "icone05.png"), 120],
   // As 3 ilustrações (BrandBook V.03: p.51 Ícones e p.57 Selos)
   ["selo-rede-viva", BRAND("ilustracoes/selo-rede-viva.png"), 420],
   ["coral-xilogravura", BRAND("ilustracoes/coral-xilogravura.png"), 360],

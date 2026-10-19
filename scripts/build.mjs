@@ -213,7 +213,7 @@ ${header(c)}
   <div class="container">
     ${eyebrow(hw.eyebrow, { tag: "h2", id: "how-title" })}
     <ol class="pillars">
-      ${hw.cards.map((k, i) => `<li class="pillar"><span class="pillar__num">${pad2(i + 1)}</span><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></li>`).join("\n      ")}
+      ${hw.cards.map((k, i) => `<li class="pillar"><div class="pillar__head">${img(k.icon, "", { cls: "pillar__icon" })}<span class="pillar__num">${pad2(i + 1)}</span></div><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></li>`).join("\n      ")}
     </ol>
   </div>
 </section>
