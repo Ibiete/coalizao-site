@@ -32,6 +32,14 @@ const MANIFEST = [
   ["selo-rede-viva", BRAND("ilustracoes/selo-rede-viva.png"), 420],
   ["coral-xilogravura", BRAND("ilustracoes/coral-xilogravura.png"), 360],
   ["selo-vida-que-pulsa", BRAND("ilustracoes/selo-vida-que-pulsa.png"), 300],
+  // Fotos reais (pasta "Imagens" do Drive enviada pelo Shawã em 2026-10-19; originais em
+  // brand/fotos/, fora do git por tamanho). Cada uma sai em 2 larguras para o srcset.
+  ...[
+    ["foto-hero", "recife-coral-fogo_filipe-cadena.jpg"],
+    ["foto-piscinas", "piscinas-naturais-apa-costa-dos-corais_barbara-pinheiro.jpg"],
+    ["foto-viveiro", "viveiro-restauracao_filipe-cadena.jpg"],
+    ["foto-cardume", "recife-cardume_filipe-cadena.jpg"],
+  ].flatMap(([name, f]) => [[name, BRAND(`fotos/${f}`), 1920], [`${name}-960`, BRAND(`fotos/${f}`), 960]]),
   // Parceiros (logos oficiais baixados dos sites de cada organização)
   ["parceiro-fgb", join(PARTNERS, "fgb-logo2.png"), 346],
   ["parceiro-wwf", join(PARTNERS, "wwf-logo.png"), 186],
@@ -69,7 +77,7 @@ for (const [name, src, width] of MANIFEST) {
   if (SOLID_BOTTOM.has(name)) base = await cropTransparentBottom(base);
   const info = await sharp(base)
     .resize({ width, withoutEnlargement: true })
-    .webp({ quality: name.startsWith("hero-fundo") || name.includes("foto") || name.includes("colagem") || name.includes("veleiro") ? 80 : 86, effort: 6, alphaQuality: 90 })
+    .webp({ quality: name.startsWith("foto-hero") ? 58 : name.startsWith("foto-") ? 74 : 86, effort: 6, alphaQuality: 90 })
     .toFile(out);
   total += info.size;
   console.log(`${name}.webp ${info.width}x${info.height} ${(info.size / 1024).toFixed(0)} KB`);

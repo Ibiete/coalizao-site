@@ -270,6 +270,13 @@ export default {
     },
   },
 
+  // Real photos (caption + credit shown under each band)
+  photos: {
+    hero: { credit: "Photo: Filipe Cadena" },
+    piscinas: { alt: "Natural pools formed by coral reefs in the Costa dos Corais protected area, seen at low tide", caption: "Natural pools in the Costa dos Corais protected area.", credit: "Photo: Bárbara Pinheiro" },
+    viveiro: { alt: "Diver above submerged structures holding growing coral fragments", caption: "Coral fragments growing on restoration structures.", credit: "Photo: Filipe Cadena" },
+    cardume: { alt: "School of fish swimming beside a coral reef", caption: "Healthy reefs sustain marine life and the people who live from the sea.", credit: "Photo: Filipe Cadena" },
+  },
   footer: {
     tagline: "For the life that pulses beneath the sea.",
     text: "A Brazilian civil society initiative founded by Fundação Grupo Boticário and WWF-Brazil.",

@@ -33,6 +33,10 @@ SRC=~/caminho/da/pasta/do/drive npm run assets && npm run build
 git commit -am "..." && git push   # CI publica ghcr.io/ibiete/coalizao-site:latest
 ```
 
+Fotos reais (hero e 3 faixas com legenda/crédito): originais em `brand/fotos/` (fora do git, ~40 MB),
+vindas da pasta "Imagens" do Drive da Coalizão (fotos de Filipe Cadena e Bárbara Pinheiro). Para trocar,
+baixar o original para lá, ajustar o nome em `scripts/assets.mjs` e a legenda em `content/*.mjs` (`photos`).
+
 PDFs para download (BrandBook, Guia de Comunicação...) **não ficam no git nem na imagem**: ficam em
 `/docker/coalizao-site/docs/` na VPS (volume montado em `/docs/`). Para publicar um novo: copiar o PDF
 para essa pasta e apontar o `href` do card/rodapé em `content/*.mjs`. PDF muito pesado: comprimir antes

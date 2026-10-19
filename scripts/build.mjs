@@ -40,6 +40,15 @@ function img(name, alt = "", { cls = "", eager = false } = {}) {
   return `<img src="/assets/img/${name}.webp" width="${d[0]}" height="${d[1]}" ${a}${cls ? ` class="${cls}"` : ""} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 
+// Foto real em faixa larga (srcset 960/1920). Legenda + crédito do fotógrafo sempre visíveis.
+function photo(name, ph, { cls = "", eager = false } = {}) {
+  const d = dims[name];
+  if (!d) throw new Error(`imagem não encontrada: ${name}`);
+  const im = `<img src="/assets/img/${name}.webp" srcset="/assets/img/${name}-960.webp 960w, /assets/img/${name}.webp ${d[0]}w" sizes="100vw" width="${d[0]}" height="${d[1]}" ${ph ? `alt="${esc(ph.alt)}"` : `alt="" aria-hidden="true"`}${cls ? ` class="${cls}"` : ""} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  if (!ph) return im;
+  return `<figure class="photo-band">${im}<figcaption class="container"><span>${esc(ph.caption)}</span> <span class="photo-band__credit">${esc(ph.credit)}</span></figcaption></figure>`;
+}
+
 const title = (parts, tag = "h2", cls = "", id = "") =>
   `<${tag}${id ? ` id="${id}"` : ""}${cls ? ` class="${cls}"` : ""}>${parts.map((p) => (p.c ? `<span class="t-${p.c}">${esc(p.t)}</span>` : `<span>${esc(p.t)}</span>`)).join(" ")}</${tag}>`;
 
@@ -172,7 +181,7 @@ ${header(c)}
 
 <!-- Hero -->
 <section class="hero" aria-labelledby="hero-title">
-  ${img("simbolo-branco", "", { cls: "hero__mark", eager: true })}
+  ${photo("foto-hero", null, { cls: "hero__photo", eager: true })}
   <div class="container hero__content">
     <p class="hero__eyebrow">${img("coral-eyebrow", "", { cls: "hero__eyebrow-icon", eager: true })}<span>${esc(h.eyebrow)}</span></p>
     ${title(h.h1, "h1", "hero__title", "hero-title")}
@@ -183,6 +192,7 @@ ${header(c)}
     </div>
     <p class="hero__aligned">${img("tres-ondas", "", { cls: "hero__waves-icon", eager: true })}<span>${h.aligned}</span></p>
   </div>
+  <p class="hero__credit">${esc(c.photos.hero.credit)}</p>
 </section>
 
 <!-- Quem somos -->
@@ -224,6 +234,8 @@ ${header(c)}
     </div>
   </div>
 </section>
+
+${photo("foto-piscinas", c.photos.piscinas)}
 
 <!-- Recifes em números + Você sabia? -->
 <section class="section numbers navy" id="${id.numbers}" aria-labelledby="numbers-title">
@@ -283,6 +295,8 @@ ${header(c)}
   </div>
 </section>
 
+${photo("foto-viveiro", c.photos.viveiro)}
+
 <!-- Nossas ações + Grupos de Trabalho (unificados) -->
 <section class="section actions" id="${id.actions}" aria-labelledby="actions-title">
   <div class="container">
@@ -323,6 +337,7 @@ ${header(c)}
 </section>
 
 <!-- Rede de Impacto -->
+${photo("foto-cardume", c.photos.cardume)}
 <section class="section network" id="${id.network}" aria-labelledby="network-title">
   <div class="container">
     ${eyebrow(nw.eyebrow)}

@@ -271,6 +271,13 @@ export default {
     },
   },
 
+  // Fotos reais (legenda + crédito aparecem embaixo de cada faixa)
+  photos: {
+    hero: { credit: "Foto: Filipe Cadena" },
+    piscinas: { alt: "Piscinas naturais formadas pelos recifes de coral na APA Costa dos Corais, vistas na maré baixa", caption: "Piscinas naturais na APA Costa dos Corais.", credit: "Foto: Bárbara Pinheiro" },
+    viveiro: { alt: "Mergulhador sobre estruturas submersas com fragmentos de coral em crescimento", caption: "Fragmentos de coral crescendo em estruturas de restauração.", credit: "Foto: Filipe Cadena" },
+    cardume: { alt: "Cardume de peixes nadando junto a um recife de coral", caption: "Recifes saudáveis sustentam a vida marinha e quem vive do mar.", credit: "Foto: Filipe Cadena" },
+  },
   footer: {
     tagline: "Pela vida que pulsa sob o mar.",
     text: "Iniciativa da sociedade civil brasileira, idealizada pela Fundação Grupo Boticário e pelo WWF-Brasil.",
