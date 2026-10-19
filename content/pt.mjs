@@ -61,7 +61,7 @@ export default {
     eyebrow: "Quem somos",
     h2: [{ t: "Uma rede viva pelos" }, { t: "recifes de coral", c: "coral" }, { t: "brasileiros" }],
     paragraphs: [
-      "A Coalizão Corais do Brasil é uma articulação multissetorial dedicada à proteção, conservação e restauração dos recifes de coral do país. Nascemos do encontro entre ciência, comunidades, setor privado, academia e sociedade civil, com o propósito de unir forças em torno da vida marinha e da sustentabilidade dos ecossistemas costeiros brasileiros.",
+      "A Coalizão Corais do Brasil é uma articulação multissetorial dedicada à conservação, restauração e valorização dos recifes de coral do país. Nascemos do encontro entre ciência, comunidades, setor privado, academia e sociedade civil, com o propósito de unir forças em torno da vida marinha e da sustentabilidade dos ecossistemas costeiros brasileiros.",
       "A Coalizão começou a ser estruturada em 2022, a partir de um mapeamento das iniciativas existentes e da escuta de representantes do setor privado, do terceiro setor, da academia, do governo e de comunidades locais.",
       "Mais do que uma rede de parceiros, somos um movimento colaborativo, que atua de forma integrada e transparente para fortalecer a agenda nacional e global de conservação dos corais.",
       "Nosso compromisso é atuar como uma plataforma integradora, conectando iniciativas já existentes, evitando a duplicação de esforços e fortalecendo ações de conservação. Buscamos ampliar impactos, influenciar políticas públicas, apoiar soluções e fortalecer o protagonismo do Brasil na pauta oceânica internacional.",
@@ -86,7 +86,7 @@ export default {
     h2: [{ t: "Cuidar dos corais" }, { t: "é cuidar de nós.", c: "coral" }],
     intro: "Os recifes de coral são mais do que ecossistemas: são redes vivas que nos ensinam sobre interdependência e resiliência. São importantes para a biodiversidade marinha, a proteção costeira, a segurança alimentar de comunidades tradicionais e a economia do turismo.",
     cards: [
-      { icon: "icone-biodiversidade", title: "Biodiversidade", text: "Ocupam menos de 0,1% do fundo do oceano, mas 1 em cada 4 espécies marinhas vive ou passa parte da vida neles." },
+      { icon: "icone-biodiversidade", title: "Biodiversidade", text: "Ocupam menos de 0,2% do fundo do oceano e sustentam mais de 30% das espécies marinhas conhecidas." },
       { icon: "icone-protecao-costeira", title: "Proteção costeira", text: "Reduzem a força das ondas e ajudam a proteger praias e cidades." },
       { icon: "icone-seguranca-alimentar", title: "Segurança alimentar", text: "Sustentam a pesca e o alimento de comunidades tradicionais." },
       { icon: "icone-economia", title: "Economia e cultura", text: "Movem o turismo e fazem parte da identidade de muitos territórios." },
@@ -99,11 +99,11 @@ export default {
     h3: [{ t: "Recifes bem brasileiros," }, { t: "com valor para todo o país", c: "coral" }],
     stats: [
       { icon: "icone-mapa-brasil", value: "3.000 km", color: "coral", label: "de costa com ambientes recifais, do Maranhão ao sul da Bahia" },
-      { icon: "icone-corais", value: "+60", color: "sky", label: "espécies de corais no Brasil, algumas encontradas somente aqui" },
+      { icon: "icone-corais", value: "1.178 km²", color: "sky", label: "de recifes de coral no Brasil" },
       { icon: "icone-escudo", value: "R$ 160 bi", color: "yellow", label: "por ano em proteção costeira estimada no Nordeste*" },
       { icon: "icone-palmeira", value: "R$ 7 bi", color: "sky", label: "por ano em potencial de turismo ligado aos recifes no Nordeste" },
     ],
-    source: "<strong>Fonte:</strong> Oceano sem mistérios: Desvendando os recifes de corais, Fundação Grupo Boticário em parceria com a Bloom Ocean. Valores econômicos são estimativas anuais; resultados extrapolados estão sujeitos a revisão. *Considera cerca de 170 km² de recifes de coral, areníticos ou rochosos.",
+    source: "<strong>Fonte:</strong> Oceano sem mistérios: Desvendando os recifes de corais, Fundação Grupo Boticário em parceria com a Bloom Ocean. Valores econômicos são estimativas anuais; resultados extrapolados estão sujeitos a revisão. *Considera cerca de 170 km² de recifes de coral, areníticos ou rochosos. Área de recifes de coral no Brasil e dados de biodiversidade: GCRMN 2025, capítulo Brasil.",
     imageAlt: "Jangada navegando sobre um recife de coral raso, com coqueiros ao fundo",
   },
 
@@ -141,7 +141,8 @@ export default {
   },
 
   actions: {
-    eyebrow: "Nossas ações",
+    eyebrow: "Nossas ações · Grupos de Trabalho",
+    gtLabel: "Grupo de Trabalho",
     h2: [{ t: "Do compromisso global" }, { t: "à ação no território", c: "coral" }],
     intro: "Seguimos as metas globais do Coral Reef Breakthrough, adaptadas à realidade dos recifes brasileiros. Cada eixo temático tem um Grupo de Trabalho, onde as organizações da Rede de Impacto constroem iniciativas colaborativas e geram resultados concretos.",
     cards: [

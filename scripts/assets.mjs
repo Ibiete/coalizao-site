@@ -16,102 +16,22 @@ const B = (bloco, file) => join(SRC, "BLOCOS", bloco, file);
 const G = (stamp) => `Imagem do ChatGPT 17 de out. de 2026, ${stamp}.png`;
 
 // [arquivo de saída, origem, largura máxima]
+// v2 (briefing da Bloom, 2026-10-19): visual institucional/editorial. Saíram fotos
+// geradas por IA, faixas ilustradas e ícones ilustrados. Ficam: logos, os dois
+// ícones do hero aprovados no briefing, logos de parceiros e no máximo 3
+// ilustrações em xilogravura, todas do BrandBook (brand/ilustracoes/).
+const BRAND = (f) => new URL(`../brand/${f}`, import.meta.url).pathname;
 const MANIFEST = [
   // Marca
   ["logo-pt", join(SRC, "LOGO PT EN/Logo PT transparente.png"), 640],
   ["logo-en", join(SRC, "LOGO PT EN/logo-EN-transparente.png"), 640],
-  // Blocos 1-2 — cabeçalho e hero
-  ["divisor-ondulado", B("Bloco 1 e 2/imagens bloco 1 e 2", "Divisor Ondulado Azul e Marfim.png"), 2000],
-  // v2 enviada pelo Shawã em 2026-10-18 (Drive 1-V1xwrA3tN2U1RQgjEk8wLbwyTZvDyOT), substitui a original
-  ["hero-moldura", B("Bloco 1 e 2/imagens bloco 1 e 2", "Moldura Marinha em Aquarela v2.png"), 1448],
-  ["tres-ondas", B("Bloco 1 e 2/imagens bloco 1 e 2", "Três Ondas Aqua Texturizadas.png"), 160],
-  ["hero-fundo", B("Bloco 1 e 2/imagens bloco 1 e 2", "imagem de fundo.png"), 1448],
-  // Bloco 3 — Quem somos
-  ["coral-laranja", B("Bloco 3/imagens bloco 3", "Coral Ramificado em Laranja Vibrante.png"), 420],
-  ["quem-somos-foto", B("Bloco 3/imagens bloco 3", "Restauração de Corais em Águas Tropicais.png"), 1000],
-  ["rodape-oceanico", B("Bloco 3/imagens bloco 3", "Rodapé Oceânico com Coral Dourado.png"), 2000],
-  // Bloco 4 — Como atuamos
-  ["icone-comunidades", B("Bloco 4/imagens bloco 4", "icone01.png"), 300],
-  ["icone-ciencia", B("Bloco 4/imagens bloco 4", "icone02.png"), 300],
-  ["icone-articulacao", B("Bloco 4/imagens bloco 4", "icone03.png"), 300],
-  ["icone-comunicacao", B("Bloco 4/imagens bloco 4", "icone04.png"), 300],
-  ["icone-politicas", B("Bloco 4/imagens bloco 4", "icone05.png"), 300],
-  // rodapé do bloco 4 enviado pelo Shawã em 2026-10-18 (Drive 1nebYJFNKN0tNi5XFhhEOzTZEGRrOWtbi)
-  ["rodape-como-atuamos", B("Bloco 4/imagens bloco 4", "rodape-como-atuamos-v2.png"), 2000],
-  // Bloco 5 — Recifes do Brasil
-  ["recifes-colagem", B("Bloco 5/imagens bloco 5", "Colagem Tropical de Recife de Coral.png"), 1100],
-  ["faixa-litoranea", B("Bloco 5/imagens bloco 5", "Faixa Tropical Litorânea Texturizada.png"), 2000],
-  ["icone-biodiversidade", B("Bloco 5/imagens bloco 5", G("10_43_29")), 260],
-  ["icone-seguranca-alimentar", B("Bloco 5/imagens bloco 5", G("10_43_40")), 260],
-  ["icone-economia", B("Bloco 5/imagens bloco 5", G("10_43_45")), 260],
-  ["icone-protecao-costeira", B("Bloco 5/imagens bloco 5", G("10_43_50")), 260],
-  // Blocos 6-8 — números, você sabia, vídeo
-  ["divisor-corda", B("Bloco 6 7 8/imagens bloco 6 7 8", "Divisor Náutico de Corda e Bolhas.png"), 2000],
+  // Hero (aprovados no briefing: coral do eyebrow e ondas do "Alinhada à agenda")
   ["coral-eyebrow", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_18-1")), 120],
-  ["icone-mapa-brasil", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_19-2")), 240],
-  ["icone-corais", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_20-3")), 240],
-  ["icone-escudo", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_20-4")), 240],
-  ["icone-palmeira", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_21-5")), 240],
-  ["icone-interrogacao", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_22-6")), 360],
-  ["icone-concha", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_23-7")), 300],
-  ["icone-play", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_24-8")), 220],
-  ["ancora", B("Bloco 6 7 8/imagens bloco 6 7 8", G("11_25_25-9")), 300],
-  ["veleiro-recife", B("Bloco 6 7 8/imagens bloco 6 7 8", "Veleiro tropical sobre recife de corais.png"), 900],
-  // Blocos 9-10 — missão/valores
-  ["ilha-aves", B("Bloco 9 e 10/imagens bloco 9 e 10", G("11_58_27")), 1100],
-  ["divisor-onda-coral", B("Bloco 9 e 10/imagens bloco 9 e 10", G("11_58_34")), 2000],
-  ["tartaruga", B("Bloco 9 e 10/imagens bloco 9 e 10", G("11_58_39")), 2000],
-  // Bloco 11 — Nossas ações
-  // topo do bloco 11 trocado pelo Shawã em 2026-10-18 (Drive 1zBzwEUGmBvWu3jCFQ3RgdWriY13gT9li) — substitui o pescador
-  ["acoes-global-local", B("Bloco 11/imagens bloco 11", "acoes-global-local.png"), 760],
-  ["icone-eixo-ameacas", B("Bloco 11/imagens bloco 11", G("20_41_41")), 280],
-  ["icone-eixo-protecao", B("Bloco 11/imagens bloco 11", G("20_41_45")), 280],
-  ["icone-eixo-restauracao", B("Bloco 11/imagens bloco 11", G("20_41_49")), 280],
-  ["icone-eixo-investimentos", B("Bloco 11/imagens bloco 11", G("20_41_54")), 280],
-  ["icone-eixo-monitoramento", B("Bloco 11/imagens bloco 11", G("20_41_59")), 280],
-  ["recife-faixa-colorida", B("Bloco 11/imagens bloco 11", G("20_42_03")), 2000],
-  // Bloco 12 — Grupos de trabalho
-  ["gt-grupo-maos", B("Bloco 12/imagens bloco 12", G("20_39_30")), 800],
-  ["gt1-ilustracao", B("Bloco 12/imagens bloco 12", G("20_39_42")), 520],
-  ["gt2-ilustracao", B("Bloco 12/imagens bloco 12", G("20_39_47")), 520],
-  ["gt3-ilustracao", B("Bloco 12/imagens bloco 12", G("20_39_52")), 520],
-  ["gt4-ilustracao", B("Bloco 12/imagens bloco 12", G("20_39_56")), 520],
-  ["gt5-ilustracao", B("Bloco 12/imagens bloco 12", G("20_40_00")), 520],
-  ["praia-limpeza", B("Bloco 12/imagens bloco 12", G("20_40_05")), 2000],
-  // Blocos 13-14 — governança/resultados
-  ["pessoas-costao", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_36_13")), 1000],
-  ["icone-resultado-recifes", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_36_43")), 200],
-  ["icone-resultado-restauracao", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_36_49")), 200],
-  ["icone-resultado-investimento", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_36_54")), 200],
-  ["recife-faixa-baixa", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_36_59")), 2000],
-  ["aves", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_37_05")), 600],
-  ["passo-1", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_37_10")), 140],
-  ["passo-2", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_37_21")), 140],
-  ["passo-3", B("Bloco 13 e 14/imagens bloco 13 e 14", G("20_37_26")), 140],
-  // Blocos 15-16 — rede/materiais
-  ["barco-ilha", B("Bloco 15 e 16/imagens bloco 15 e 16", "01_barco_ilha_aves.png"), 900],
-  ["documentos-corais", B("Bloco 15 e 16/imagens bloco 15 e 16", "02_documentos_com_corais.png"), 615],
-  ["doc-governanca", B("Bloco 15 e 16/imagens bloco 15 e 16", "03_politica_governanca.png"), 120],
-  ["doc-adesao", B("Bloco 15 e 16/imagens bloco 15 e 16", "04_termo_adesao.png"), 120],
-  ["doc-brandbook", B("Bloco 15 e 16/imagens bloco 15 e 16", "05_brandbook.png"), 120],
-  ["doc-guia", B("Bloco 15 e 16/imagens bloco 15 e 16", "06_guia_comunicacao.png"), 120],
-  ["doc-oficina", B("Bloco 15 e 16/imagens bloco 15 e 16", "07_relatorio_oficina.png"), 120],
-  ["doc-publicacao", B("Bloco 15 e 16/imagens bloco 15 e 16", "08_publicacao_oceano.png"), 120],
-  ["doc-anual", B("Bloco 15 e 16/imagens bloco 15 e 16", "09_relatorio_anual.png"), 120],
-  ["ornamento-esquerdo", B("Bloco 15 e 16/imagens bloco 15 e 16", "10_ornamento_coral_esquerdo.png"), 517],
-  ["ornamento-centro", B("Bloco 15 e 16/imagens bloco 15 e 16", "11_ornamento_coral_centro.png"), 490],
-  ["ornamento-direito", B("Bloco 15 e 16/imagens bloco 15 e 16", "12_ornamento_coral_direito.png"), 415],
-  // Blocos 17-18 — contato/rodapé
-  ["recife-contato", B("Bloco 17 e 18/imagens bloco 17 e 18", "01_recife_contato.png"), 1000],
-  ["recife-rodape", B("Bloco 17 e 18/imagens bloco 17 e 18", "02_recife_rodape.png"), 900],
-  ["cardume", B("Bloco 17 e 18/imagens bloco 17 e 18", "03_cardume_peixes.png"), 700],
-  ["peixe-bolhas", B("Bloco 17 e 18/imagens bloco 17 e 18", "04_peixe_bolhas_rodape.png"), 400],
-  ["ondas-divisoria", B("Bloco 17 e 18/imagens bloco 17 e 18", "05_ondas_divisoria.png"), 1600],
-  ["bolhas", B("Bloco 17 e 18/imagens bloco 17 e 18", "06_bolhas_dagua.png"), 300],
-  ["icone-email", B("Bloco 17 e 18/imagens bloco 17 e 18", "icone_email.png"), 96],
-  ["icone-instagram", B("Bloco 17 e 18/imagens bloco 17 e 18", "icone_instagram.png"), 96],
-  ["icone-linkedin", B("Bloco 17 e 18/imagens bloco 17 e 18", "icone_linkedin.png"), 96],
-  ["icone-youtube", B("Bloco 17 e 18/imagens bloco 17 e 18", "icone_youtube.png"), 96],
+  ["tres-ondas", B("Bloco 1 e 2/imagens bloco 1 e 2", "Três Ondas Aqua Texturizadas.png"), 160],
+  // As 3 ilustrações (BrandBook V.03: p.51 Ícones e p.57 Selos)
+  ["selo-rede-viva", BRAND("ilustracoes/selo-rede-viva.png"), 420],
+  ["coral-xilogravura", BRAND("ilustracoes/coral-xilogravura.png"), 360],
+  ["selo-vida-que-pulsa", BRAND("ilustracoes/selo-vida-que-pulsa.png"), 300],
   // Parceiros (logos oficiais baixados dos sites de cada organização)
   ["parceiro-fgb", join(PARTNERS, "fgb-logo2.png"), 346],
   ["parceiro-wwf", join(PARTNERS, "wwf-logo.png"), 186],
@@ -122,7 +42,7 @@ const MANIFEST = [
 // deixa alguns px transparentes embaixo (pixel quase invisível perdido) → margem
 // branca entre blocos. Corta a base até a primeira linha ≥99,5% opaca (alpha ≥250).
 // praia-limpeza fica de fora: é uma cena com bordas irregulares, não uma faixa sólida
-const SOLID_BOTTOM = new Set(["rodape-oceanico", "rodape-como-atuamos", "faixa-litoranea", "divisor-onda-coral", "recife-faixa-colorida", "recife-faixa-baixa"]);
+const SOLID_BOTTOM = new Set([]); // v2 não tem mais faixas de rodapé; mantido para artes futuras
 async function cropTransparentBottom(buf) {
   const { data, info } = await sharp(buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   let bottom = info.height - 1;
@@ -178,5 +98,21 @@ const entries = pngs.map((buf, i) => {
 });
 writeFileSync(new URL("../site/favicon.ico", import.meta.url).pathname, Buffer.concat([header, ...entries, ...pngs]));
 // Imagem de compartilhamento (Open Graph) 1200x630: o hero de referência
-await sharp(B("Bloco 1 e 2", "imagem completa bloco 1 e 2.png")).resize(1200, 630, { fit: "cover", position: "top" }).jpeg({ quality: 82 }).toFile(join(OUT, "og-pt.jpg"));
+// Imagem de compartilhamento (Open Graph) 1200x630: logo sobre o creme da marca (v2, sem foto de IA)
+for (const [lang, logoFile] of [["pt", "Logo PT transparente.png"], ["en", "logo-EN-transparente.png"]]) {
+  const logoBuf = await sharp(join(SRC, "LOGO PT EN", logoFile)).trim({ threshold: 1 }).resize({ width: 820 }).png().toBuffer();
+  const lm = await sharp(logoBuf).metadata();
+  await sharp({ create: { width: 1200, height: 630, channels: 3, background: { r: 247, g: 242, b: 231 } } })
+    .composite([
+      { input: logoBuf, left: Math.round((1200 - lm.width) / 2), top: Math.round((630 - lm.height) / 2) - 10 },
+      { input: Buffer.from('<svg width="1200" height="12"><rect width="1200" height="12" fill="#FD6E5D"/></svg>'), left: 0, top: 618 },
+    ])
+    .jpeg({ quality: 86 }).toFile(join(OUT, `og-${lang}.jpg`));
+}
+// Marca d'água do hero: o símbolo oficial em branco (só a forma, sem cores)
+{
+  const { data, info } = await sharp(symbolSrc).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  for (let i = 0; i < data.length; i += 4) { data[i] = data[i + 1] = data[i + 2] = 255; }
+  await sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } }).trim({ threshold: 1 }).resize({ width: 900 }).webp({ quality: 88, alphaQuality: 90 }).toFile(join(OUT, "simbolo-branco.webp"));
+}
 console.log("favicons + og ok");

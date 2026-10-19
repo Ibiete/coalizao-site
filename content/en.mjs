@@ -10,7 +10,7 @@ export default {
   description:
     "A Brazilian civil society initiative bringing together science, communities and commitments to conserve, restore and value the country's coral reefs.",
   ogLocale: "en_US",
-  ogImage: "/assets/img/og-pt.jpg",
+  ogImage: "/assets/img/og-en.jpg",
   logo: { src: "/assets/img/logo-en.webp", alt: "Brazilian Coral Reef Coalition" },
   skip: "Skip to content",
   menuOpen: "Open menu",
@@ -60,7 +60,7 @@ export default {
     eyebrow: "About us",
     h2: [{ t: "A living network for" }, { t: "Brazil's coral reefs", c: "coral" }],
     paragraphs: [
-      "The Brazilian Coral Reef Coalition is a multisector collaboration dedicated to protecting, conserving and restoring the country's coral reefs. We emerged from the meeting of science, communities, the private sector, academia and civil society, with the purpose of joining forces around marine life and the sustainability of Brazil's coastal ecosystems.",
+      "The Brazilian Coral Reef Coalition is a multisector collaboration dedicated to the conservation, restoration and appreciation of the country's coral reefs. We emerged from the meeting of science, communities, the private sector, academia and civil society, with the purpose of joining forces around marine life and the sustainability of Brazil's coastal ecosystems.",
       "The Coalition began taking shape in 2022, based on a mapping of existing initiatives and consultation with representatives of the private sector, the nonprofit sector, academia, government and local communities.",
       "More than a network of partners, we are a collaborative movement working in an integrated and transparent way to strengthen the national and global coral conservation agenda.",
       "Our commitment is to act as an integrating platform, connecting existing initiatives, avoiding duplication of effort and strengthening conservation actions. We seek to expand impact, influence public policy, support solutions and strengthen Brazil's leadership on the international ocean agenda.",
@@ -85,7 +85,7 @@ export default {
     h2: [{ t: "Caring for corals" }, { t: "means caring for ourselves.", c: "coral" }],
     intro: "Coral reefs are more than ecosystems: they are living networks that teach us about interdependence and resilience. They are important for marine biodiversity, coastal protection, the food security of traditional communities and the tourism economy.",
     cards: [
-      { icon: "icone-biodiversidade", title: "Biodiversity", text: "They occupy less than 0.1% of the ocean floor, yet one in every four marine species lives in them or spends part of its life there." },
+      { icon: "icone-biodiversidade", title: "Biodiversity", text: "They occupy less than 0.2% of the ocean floor and support more than 30% of known marine species." },
       { icon: "icone-protecao-costeira", title: "Coastal protection", text: "They reduce wave energy and help protect beaches and cities." },
       { icon: "icone-seguranca-alimentar", title: "Food security", text: "They support fishing and provide food for traditional communities." },
       { icon: "icone-economia", title: "Economy and culture", text: "They drive tourism and are part of the identity of many territories." },
@@ -98,11 +98,11 @@ export default {
     h3: [{ t: "Truly Brazilian reefs," }, { t: "bringing value to the entire country", c: "coral" }],
     stats: [
       { icon: "icone-mapa-brasil", value: "3,000 km", color: "coral", label: "of coastline with reef environments, from Maranhão to southern Bahia" },
-      { icon: "icone-corais", value: "+60", color: "sky", label: "coral species in Brazil, some found only here" },
+      { icon: "icone-corais", value: "1,178 km²", color: "sky", label: "of coral reefs in Brazil" },
       { icon: "icone-escudo", value: "BRL 160 billion", color: "yellow", label: "per year in estimated coastal protection in the Northeast*" },
       { icon: "icone-palmeira", value: "BRL 7 billion", color: "sky", label: "per year in potential reef-related tourism in the Northeast" },
     ],
-    source: "<strong>Source:</strong> Oceano sem mistérios: Desvendando os recifes de corais [Ocean Without Mysteries: Unveiling Coral Reefs], Fundação Grupo Boticário in partnership with Bloom Ocean. Economic values are annual estimates; extrapolated findings are subject to revision. *Considers approximately 170 km² of coral, sandstone or rocky reefs.",
+    source: "<strong>Source:</strong> Oceano sem mistérios: Desvendando os recifes de corais [Ocean Without Mysteries: Unveiling Coral Reefs], Fundação Grupo Boticário in partnership with Bloom Ocean. Economic values are annual estimates; extrapolated findings are subject to revision. *Considers approximately 170 km² of coral, sandstone or rocky reefs. Coral reef area in Brazil and biodiversity data: GCRMN 2025, Brazil chapter.",
     imageAlt: "Traditional sailboat over a shallow coral reef with palm trees in the background",
   },
 
@@ -140,7 +140,8 @@ export default {
   },
 
   actions: {
-    eyebrow: "Our actions",
+    eyebrow: "Our actions · Working Groups",
+    gtLabel: "Working Group",
     h2: [{ t: "From global commitment" }, { t: "to local action", c: "coral" }],
     intro: "We follow the global Coral Reef Breakthrough targets, adapted to the reality of Brazilian reefs. Each thematic pillar has a Working Group where Impact Network organizations build collaborative initiatives and achieve concrete results.",
     cards: [
