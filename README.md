@@ -17,8 +17,8 @@ Propriedade da Bloom Ocean (Secretaria Executiva) — tenant `bloom` do NAIIAN O
 | `content/pt.mjs`, `content/en.mjs` | **Todo o texto do site**, bloco a bloco (fonte: documentos "Escopo Completo" PT/EN no Drive) |
 | `content/privacy.mjs` | Política de Privacidade PT/EN |
 | `scripts/build.mjs` | Template único → gera `site/**/index.html` (PT e EN com a mesma estrutura) |
-| `scripts/assets.mjs` | Converte as artes originais (Drive) em WebP otimizado → `site/assets/img/` |
-| `site/assets/css/style.css` | Estilo "Cordel de Corais" + responsivo (1240 / 1024 / 760 / 420 px) |
+| `scripts/assets.mjs` | Converte logos, parceiros e as 3 xilogravuras (`brand/ilustracoes/`, recortadas do BrandBook V.03) em WebP → `site/assets/img/`; gera favicons e OG |
+| `site/assets/css/style.css` | v2 "institucional com assinatura artesanal" (briefing Bloom, out/2026) + responsivo (1240 / 1024 / 760 px) |
 | `site/assets/js/main.js` | Menu mobile e envio do formulário |
 | `site/` | Resultado final (é o que vai para a imagem Docker) |
 
@@ -44,9 +44,18 @@ Deploy na VPS (depois do CI verde):
 ssh hostinger-vps "cd /docker/coalizao-site && docker compose pull && docker compose up -d"
 ```
 
-## Pendências de conteúdo (marcadas no próprio site)
+## Versões
 
-- Comitê Estratégico-Deliberativo e organizações da rede: logos "a confirmar".
-- Materiais e downloads: BrandBook e Guia de Comunicação publicados; os demais PDFs ainda não fornecidos (botões em estado "em preparação").
-- LinkedIn e YouTube: links "a confirmar". Vídeo institucional: em produção.
+- `v1` (tag): versão ilustrada "Cordel de Corais", com as artes estáticas por bloco.
+- v2 (atual): briefing da Amanda (Bloom) — clean/editorial, no máximo 3 xilogravuras do BrandBook,
+  sem fotos de IA, Ações + Grupos de Trabalho em uma seção só.
+
+## Pendências de conteúdo (ocultas no site até chegarem)
+
+O template já esconde sozinho o que não está pronto — basta preencher em `content/*.mjs`:
+- Comitê e organizações da rede: categorias só com itens `placeholder` não aparecem.
+- Materiais: só documentos com `href` aparecem (hoje BrandBook e Guia de Comunicação).
+- LinkedIn e YouTube: fora do contato até ter link. Vídeo institucional: em produção.
+- "Resultados esperados": seção não renderizada (texto aguardando a Bloom).
+- Fotos reais (com autorização de uso) podem entrar no lugar das ilustrações no futuro.
 - Política de Privacidade: texto-base, precisa de revisão da Coalizão/Bloom.
