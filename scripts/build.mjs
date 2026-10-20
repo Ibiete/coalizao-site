@@ -208,7 +208,18 @@ ${header(c)}
       ${a.paragraphs.map((p) => `<p>${esc(p)}</p>`).join("\n      ")}
       <a class="text-link" href="#${id.video}">${esc(a.videoCta)} ${icon.arrow}</a>
     </div>
-    <div class="about__art">${img("selo-rede-viva", "", { cls: "about__selo" })}</div>
+    <div class="about__art">${img("simbolo-coalizao", "", { cls: "about__selo" })}</div>
+  </div>
+</section>
+
+<!-- Missão, visão e propósito -->
+<section class="section mvp" id="${id.mvp}" aria-labelledby="mvp-title">
+  <div class="container">
+    ${eyebrow(mv.eyebrow)}
+    ${title(mv.h2, "h2", "section-title", "mvp-title")}
+    <div class="cards cards--2">
+      ${mv.cards.map((k) => `<article class="card card--lg${k.wide ? " card--wide" : ""}"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></article>`).join("\n      ")}
+    </div>
   </div>
 </section>
 
@@ -275,17 +286,6 @@ ${photo("foto-piscinas", c.photos.piscinas)}
       </button>
       <figcaption class="video-player__status">${esc(v.status)}</figcaption>
     </figure>
-  </div>
-</section>
-
-<!-- Missão, visão e propósito -->
-<section class="section mvp" id="${id.mvp}" aria-labelledby="mvp-title">
-  <div class="container">
-    ${eyebrow(mv.eyebrow)}
-    ${title(mv.h2, "h2", "section-title", "mvp-title")}
-    <div class="cards cards--2">
-      ${mv.cards.map((k) => `<article class="card card--lg${k.wide ? " card--wide" : ""}"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></article>`).join("\n      ")}
-    </div>
   </div>
 </section>
 

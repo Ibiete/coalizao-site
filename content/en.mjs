@@ -58,7 +58,7 @@ export default {
 
   about: {
     eyebrow: "About us",
-    h2: [{ t: "A living network for" }, { t: "Brazil's coral reefs", c: "coral" }],
+    h2: [{ t: "A collaborative network for" }, { t: "Brazil's coral reefs", c: "coral" }],
     paragraphs: [
       "The Brazilian Coral Reef Coalition is a multisector collaboration dedicated to the conservation, restoration and appreciation of the country's coral reefs. We emerged from the meeting of science, communities, the private sector, academia and civil society, with the purpose of joining forces around marine life and the sustainability of Brazil's coastal ecosystems.",
       "The Coalition began taking shape in 2022, based on a mapping of existing initiatives and consultation with representatives of the private sector, the nonprofit sector, academia, government and local communities.",
@@ -74,7 +74,7 @@ export default {
     cards: [
       { icon: "icone-articulacao", title: "Coordination and Governance", text: "We connect and strengthen the work of civil society, academia and the private sector through coordinated action." },
       { icon: "icone-ciencia", title: "Science and Monitoring", text: "We strengthen the scientific foundation and ongoing monitoring that support decision-making." },
-      { icon: "icone-politicas", title: "Public Policy Advocacy", text: "We contribute to the design and implementation of public policies for reef conservation, restoration and resilience." },
+      { icon: "icone-politicas", title: "Public Policy Advocacy", text: "We support and provide evidence for public policies on reef conservation, restoration and resilience." },
       { icon: "icone-comunicacao", title: "Communication and Engagement", text: "We raise the visibility of coral reefs, build public awareness and mobilize new partners and investment." },
       { icon: "icone-comunidades", title: "Community Empowerment", text: "We strengthen the leadership of traditional coastal communities and recognize their knowledge and practices.", wide: true },
     ],
@@ -145,7 +145,7 @@ export default {
     h2: [{ t: "From global commitment" }, { t: "to local action", c: "coral" }],
     intro: "We follow the global Coral Reef Breakthrough targets, adapted to the reality of Brazilian reefs. Each thematic pillar has a Working Group where Impact Network organizations build collaborative initiatives and achieve concrete results.",
     cards: [
-      { label: "Pillar 1 · WG 1", title: "Threat Mitigation", color: "coral", icon: "icone-eixo-ameacas", text: "We halt local drivers of reef loss, such as human-caused pollution, unplanned coastal development, invasive species and overfishing." },
+      { label: "Pillar 1 · WG 1", title: "Threat Mitigation", color: "coral", icon: "icone-eixo-ameacas", text: "We mitigate local drivers of reef loss, such as human-caused pollution, unplanned coastal development, invasive species and overfishing." },
       { label: "Pillar 2 · WG 2", title: "Expanding Protection", color: "teal", icon: "icone-eixo-protecao", text: "We expand and strengthen existing Protected Area systems in reef regions, recognizing and respecting the rights of Indigenous Peoples and Traditional Communities, in line with the Kunming–Montreal Global Biodiversity Framework." },
       { label: "Pillar 3 · WG 3", title: "Accelerating Restoration", color: "yellow", icon: "icone-eixo-restauracao", text: "We support science-based coral restoration strategies, environmental safeguards and recognition of traditional knowledge." },
       { label: "Pillar 4 · WG 4", title: "Mobilizing Investment", color: "sky", icon: "icone-eixo-investimentos", text: "We help mobilize public and private resources for coral conservation and restoration, connecting funders with those implementing work on the ground." },

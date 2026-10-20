@@ -141,6 +141,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .about__grid { display: grid; grid-template-columns: 1.4fr 0.6fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
 .about__text p { font-size: 1.05rem; color: var(--ink); max-width: 64ch; }
 .about__text .text-link { margin-top: 8px; }
+.about .section-title { max-width: none; }
 .about__selo { width: 100%; max-width: 280px; margin: 0 auto; }
 
 /* ---------- Como atuamos: números como protagonistas ---------- */
@@ -334,7 +335,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (max-width: 1024px) {
   body { font-size: 16.5px; }
   .about__grid, .video__grid, .governance__grid, .contact__grid, .actions__intro { grid-template-columns: 1fr; }
-  .about__selo { max-width: 200px; margin: 8px 0 0; }
+  .about__art { order: -1; }
+  .about__selo { max-width: 170px; margin: 0 auto 8px; }
   .pillars { grid-template-columns: repeat(2, 1fr); }
   .pillar, .pillar:nth-child(4) { grid-column: auto; }
   .pillar:last-child { grid-column: 1 / -1; }

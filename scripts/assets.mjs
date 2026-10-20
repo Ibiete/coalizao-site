@@ -45,7 +45,8 @@ const MANIFEST = [
   ["recife-rodape", B("Bloco 17 e 18/imagens bloco 17 e 18", "02_recife_rodape.png"), 900],
   ["peixe-bolhas", B("Bloco 17 e 18/imagens bloco 17 e 18", "04_peixe_bolhas_rodape.png"), 400],
   // As 3 ilustrações (BrandBook V.03: p.51 Ícones e p.57 Selos)
-  ["selo-rede-viva", BRAND("ilustracoes/selo-rede-viva.png"), 420],
+  // Quem somos: símbolo oficial da Coalizão (pedido da Bloom na V3, 2026-10-20 — o selo "Rede Viva" saiu junto com o termo)
+  ["simbolo-coalizao", BRAND("simbolo.png"), 420],
   ["coral-xilogravura", BRAND("ilustracoes/coral-xilogravura.png"), 360],
   // Globo → litoral do Brasil, nova versão da arte da v1 enviada pelo Shawã (2026-10-19)
   ["acoes-global-local", BRAND("ilustracoes/acoes-global-local.png"), 560],

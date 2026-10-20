@@ -59,7 +59,7 @@ export default {
 
   about: {
     eyebrow: "Quem somos",
-    h2: [{ t: "Uma rede viva pelos" }, { t: "recifes de coral", c: "coral" }, { t: "brasileiros" }],
+    h2: [{ t: "Uma rede colaborativa pelos" }, { t: "recifes de coral", c: "coral" }, { t: "brasileiros" }],
     paragraphs: [
       "A Coalizão Corais do Brasil é uma articulação multissetorial dedicada à conservação, restauração e valorização dos recifes de coral do país. Nascemos do encontro entre ciência, comunidades, setor privado, academia e sociedade civil, com o propósito de unir forças em torno da vida marinha e da sustentabilidade dos ecossistemas costeiros brasileiros.",
       "A Coalizão começou a ser estruturada em 2022, a partir de um mapeamento das iniciativas existentes e da escuta de representantes do setor privado, do terceiro setor, da academia, do governo e de comunidades locais.",
@@ -75,8 +75,8 @@ export default {
     cards: [
       { icon: "icone-articulacao", title: "Articulação e Governança", text: "Conectamos e potencializamos o trabalho da sociedade civil, da academia e do setor privado em uma atuação coordenada." },
       { icon: "icone-ciencia", title: "Ciência e Monitoramento", text: "Fortalecemos a base científica e o monitoramento contínuo que subsidiam a tomada de decisão." },
-      { icon: "icone-politicas", title: "Incidência em Políticas Públicas", text: "Atuamos na formulação e implementação de políticas públicas para a conservação, a restauração e a resiliência dos recifes." },
-      { icon: "icone-comunicacao", title: "Comunicação e Engajamento", text: "Damos visibilidade aos corais, sensibilizamos a sociedade e mobilizamos novos parceiros e investimentos." },
+      { icon: "icone-politicas", title: "Incidência em Políticas Públicas", text: "Apoiamos e geramos subsídios para políticas públicas para a conservação, a restauração e a resiliência dos recifes." },
+      { icon: "icone-comunicacao", title: "Comunicação e Engajamento", text: "Damos visibilidade aos recifes de coral, sensibilizamos a sociedade e mobilizamos novos parceiros e investimentos." },
       { icon: "icone-comunidades", title: "Empoderamento das Comunidades", text: "Fortalecemos o protagonismo das comunidades costeiras tradicionais e reconhecemos seus saberes e práticas.", wide: true },
     ],
   },
@@ -146,7 +146,7 @@ export default {
     h2: [{ t: "Do compromisso global" }, { t: "à ação no território", c: "coral" }],
     intro: "Seguimos as metas globais do Coral Reef Breakthrough, adaptadas à realidade dos recifes brasileiros. Cada eixo temático tem um Grupo de Trabalho, onde as organizações da Rede de Impacto constroem iniciativas colaborativas e geram resultados concretos.",
     cards: [
-      { label: "Eixo 1 · GT 1", title: "Mitigação de Ameaças", color: "coral", icon: "icone-eixo-ameacas", text: "Interrompemos os fatores locais de perda dos recifes, como a poluição de origem humana, o desenvolvimento costeiro desordenado, as espécies invasoras e a sobrepesca." },
+      { label: "Eixo 1 · GT 1", title: "Mitigação de Ameaças", color: "coral", icon: "icone-eixo-ameacas", text: "Mitigamos os fatores locais de perda dos recifes, como a poluição de origem humana, o desenvolvimento costeiro desordenado, as espécies invasoras e a sobrepesca." },
       { label: "Eixo 2 · GT 2", title: "Expansão da Proteção", color: "teal", icon: "icone-eixo-protecao", text: "Ampliamos e fortalecemos os sistemas de Unidades de Conservação existentes nas áreas recifais, reconhecendo e respeitando os direitos dos Povos Indígenas e Comunidades Tradicionais, em alinhamento com o Marco Global de Biodiversidade de Kunming-Montreal." },
       { label: "Eixo 3 · GT 3", title: "Aceleração da Restauração", color: "yellow", icon: "icone-eixo-restauracao", text: "Apoiamos estratégias de restauração de corais com base científica, salvaguardas ambientais e valorização do conhecimento tradicional." },
       { label: "Eixo 4 · GT 4", title: "Mobilização de Investimentos", color: "sky", icon: "icone-eixo-investimentos", text: "Articulamos a mobilização de recursos públicos e privados para a conservação e restauração dos corais, conectando financiadores e quem executa na ponta." },
