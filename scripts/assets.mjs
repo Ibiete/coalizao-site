@@ -34,6 +34,16 @@ const MANIFEST = [
   ["icone-articulacao", B("Bloco 4/imagens bloco 4", "icone03.png"), 120],
   ["icone-comunicacao", B("Bloco 4/imagens bloco 4", "icone04.png"), 120],
   ["icone-politicas", B("Bloco 4/imagens bloco 4", "icone05.png"), 120],
+  // Ícones do "Recifes do Brasil" trazidos da v1 (pedido do Shawã, 2026-10-19), exibidos a ~50px
+  ["icone-biodiversidade", B("Bloco 5/imagens bloco 5", G("10_43_29")), 120],
+  ["icone-seguranca-alimentar", B("Bloco 5/imagens bloco 5", G("10_43_40")), 120],
+  ["icone-economia", B("Bloco 5/imagens bloco 5", G("10_43_45")), 120],
+  ["icone-protecao-costeira", B("Bloco 5/imagens bloco 5", G("10_43_50")), 120],
+  // Topo e rodapé com o movimento da v1 (pedido do Shawã, 2026-10-19): onda sob o menu,
+  // recife e peixe com bolhas no rodapé
+  ["divisor-ondulado", B("Bloco 1 e 2/imagens bloco 1 e 2", "Divisor Ondulado Azul e Marfim.png"), 2000],
+  ["recife-rodape", B("Bloco 17 e 18/imagens bloco 17 e 18", "02_recife_rodape.png"), 900],
+  ["peixe-bolhas", B("Bloco 17 e 18/imagens bloco 17 e 18", "04_peixe_bolhas_rodape.png"), 400],
   // As 3 ilustrações (BrandBook V.03: p.51 Ícones e p.57 Selos)
   ["selo-rede-viva", BRAND("ilustracoes/selo-rede-viva.png"), 420],
   ["coral-xilogravura", BRAND("ilustracoes/coral-xilogravura.png"), 360],

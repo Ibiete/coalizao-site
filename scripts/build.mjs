@@ -86,12 +86,14 @@ function header(c, { home = true } = {}) {
       <ul class="site-nav__list">${navItems}</ul>
       <div class="site-nav__actions">
         <a class="btn btn--coral btn--sm" href="${href("#" + c.ids.form)}" data-participation="0">${esc(c.navCta)}</a>
+        <span class="rays" aria-hidden="true"><i></i><i></i><i></i></span>
         <div class="lang-switch" role="group" aria-label="${esc(c.langSwitchLabel)}">
           <a href="/" lang="pt-BR" ${c.lang === "pt-BR" ? 'aria-current="true"' : ""}>PT</a><span aria-hidden="true">|</span><a href="/en/" lang="en" ${c.lang === "en" ? 'aria-current="true"' : ""}>EN</a>
         </div>
       </div>
     </nav>
   </div>
+  ${img("divisor-ondulado", "", { cls: "site-header__wave", eager: true })}
 </header>`;
 }
 
@@ -126,6 +128,8 @@ function footer(c, { home = true } = {}) {
       <p class="site-footer__copy">${esc(f.copyright)}</p>
     </div>
   </div>
+  ${img("recife-rodape", "", { cls: "site-footer__reef" })}
+  ${img("peixe-bolhas", "", { cls: "site-footer__fish" })}
 </footer>`;
 }
 
@@ -230,7 +234,7 @@ ${header(c)}
       ${img("coral-xilogravura", "", { cls: "split__art reefs__coral" })}
     </div>
     <div class="cards cards--4">
-      ${r.cards.map((k) => `<article class="card"><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></article>`).join("\n      ")}
+      ${r.cards.map((k) => `<article class="card">${img(k.icon, "", { cls: "card__icon" })}<h3>${esc(k.title)}</h3><p>${esc(k.text)}</p></article>`).join("\n      ")}
     </div>
   </div>
 </section>
@@ -408,6 +412,7 @@ ${photo("foto-cardume", c.photos.cardume)}
       </div>
     </form>
   </div>
+  <svg class="contact__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 52 C 160 20 320 20 480 46 S 800 78 960 50 S 1280 18 1440 40 V90 H0Z" fill="#f7f2e7"/><path d="M0 52 C 160 20 320 20 480 46 S 800 78 960 50 S 1280 18 1440 40" fill="none" stroke="#9fd6f4" stroke-width="6"/><path d="M0 64 C 180 36 330 36 490 58 S 810 88 970 62 S 1290 32 1440 52" fill="none" stroke="#2ec6b7" stroke-width="2.5" opacity=".8"/></svg>
 </section>
 
 </main>
