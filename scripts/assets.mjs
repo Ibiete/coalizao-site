@@ -37,6 +37,8 @@ const MANIFEST = [
   // As 3 ilustrações (BrandBook V.03: p.51 Ícones e p.57 Selos)
   ["selo-rede-viva", BRAND("ilustracoes/selo-rede-viva.png"), 420],
   ["coral-xilogravura", BRAND("ilustracoes/coral-xilogravura.png"), 360],
+  // Globo → litoral do Brasil, nova versão da arte da v1 enviada pelo Shawã (2026-10-19)
+  ["acoes-global-local", BRAND("ilustracoes/acoes-global-local.png"), 560],
   ["selo-vida-que-pulsa", BRAND("ilustracoes/selo-vida-que-pulsa.png"), 300],
   // Fotos reais (pasta "Imagens" do Drive enviada pelo Shawã em 2026-10-19; originais em
   // brand/fotos/, fora do git por tamanho). Cada uma sai em 2 larguras para o srcset.

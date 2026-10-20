@@ -190,6 +190,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .video-player__status { margin-top: 12px; font-size: 0.92rem; color: var(--muted); }
 
 /* ---------- Nossas ações + Grupos de Trabalho ---------- */
+.actions__head { margin-bottom: 8px; }
+.actions__art { width: clamp(180px, 20vw, 260px); }
 .actions__intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); margin-bottom: 36px; }
 .actions__intro .lead { margin: 0; }
 .actions__gts p { color: var(--muted); }
@@ -345,6 +347,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .hero__waves-icon { width: 32px; }
   .split { grid-template-columns: 1fr; }
   .split__art { width: 130px; order: -1; }
+  .actions__art { width: 180px; justify-self: center; }
   .pillars, .cards--4, .cards--2, .axes, .contact-form, .checks { grid-template-columns: 1fr; }
   .pillar:last-child { grid-column: auto; }
   .stats { grid-template-columns: 1fr; }

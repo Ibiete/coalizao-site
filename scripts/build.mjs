@@ -300,8 +300,13 @@ ${photo("foto-viveiro", c.photos.viveiro)}
 <!-- Nossas ações + Grupos de Trabalho (unificados) -->
 <section class="section actions" id="${id.actions}" aria-labelledby="actions-title">
   <div class="container">
-    ${eyebrow(ac.eyebrow)}
-    ${title(ac.h2, "h2", "section-title", "actions-title")}
+    <div class="split actions__head">
+      <div>
+        ${eyebrow(ac.eyebrow)}
+        ${title(ac.h2, "h2", "section-title", "actions-title")}
+      </div>
+      ${img("acoes-global-local", ac.imageAlt, { cls: "split__art actions__art" })}
+    </div>
     <div class="actions__intro">
       <p class="lead">${esc(ac.intro)}</p>
       <div id="${id.gts}" class="actions__gts">${gt.paragraphs.map((p) => `<p>${esc(p)}</p>`).join("")}</div>
