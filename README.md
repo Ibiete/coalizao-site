@@ -63,3 +63,13 @@ O template já esconde sozinho o que não está pronto — basta preencher em `c
 - "Resultados esperados": seção não renderizada (texto aguardando a Bloom).
 - Fotos reais (com autorização de uso) podem entrar no lugar das ilustrações no futuro.
 - Política de Privacidade: texto-base, precisa de revisão da Coalizão/Bloom.
+
+## /oceandecade — evento Ocean Decade Week 2027
+
+Página "Coral Reefs at the Frontline", feita pela Bloom no Lovable (https://coralreefs.lovable.app/) e servida em `/oceandecade/`. **Não editar `site/oceandecade/` à mão**: o conteúdo é mantido no Lovable. Pra trazer uma versão nova:
+
+```bash
+node scripts/oceandecade.mjs   # baixa do Lovable, aplica logo/cores/fontes da Coalizão, atualiza a CSP no nginx.conf
+```
+
+Depois, commit + push (a CI publica a imagem) e `docker compose pull && docker compose up -d` na VPS. Foto do topo: original em alta da Helena Villela em `brand/fotos/DSC07704.JPG` (fora do git). Sem ele, o script usa a versão 1920px do Lovable.
