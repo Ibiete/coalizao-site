@@ -6,7 +6,9 @@
 // Conteúdo, ordem das seções e imagens ficam exatamente como no Lovable (o app
 // é copiado inteiro: EN/PT, contadores, formulário por e-mail). O script só:
 //   - serve o app sob /oceandecade/ (basepath do roteador + caminhos dos assets);
-//   - troca a logo provisória (emoji 🪸) pelo símbolo/logo oficiais da Coalizão;
+//   - troca a logo provisória (emoji 🪸 + nome em texto) pelo logo oficial: versão
+//     branca (negativa, regra do BrandBook p/ fundo escuro) no topo, no "Hosted by" e
+//     no rodapé; versão colorida num cartão claro na seção "Hosted by";
 //   - troca cores e fontes pelas da identidade da Coalizão (fim do CSS do app);
 //   - tira o selo "Edit with Lovable" e os scripts de analytics do Lovable;
 //   - atualiza o bloco /oceandecade/ do nginx.conf com os hashes dos scripts
@@ -26,8 +28,15 @@ const OUT = `${ROOT}site/oceandecade`;
 // fotos de brand/fotos/. Sem ele, usa a versão 1920px do próprio Lovable.
 const HERO_ORIGINAL = `${ROOT}brand/fotos/DSC07704.JPG`;
 
-const SIMBOLO = "/assets/img/simbolo-coalizao.webp";
+// Logo oficial horizontal. Versão branca (negativa, BrandBook v03 p. 11: fundos
+// escuros) do Drive 1Q2nlvlBaNSWdtV8Ps4gEhG4RmWrbRZCO; a colorida
+// (1iS2jusEt0tmkPQd000bXKR1ciknodQNQ) fica em brand/ como referência.
+const LOGO_BRANCA = `${ROOT}brand/logo-coalizao-corais-do-brasil-H-T-branca.png`;
+const LOGO_NEG = `${BASE}/assets/logo-coalizao-negativa.webp`;
 const LOGO = "/assets/img/logo-pt.webp";
+
+const logoNegativo = () =>
+  sharp(LOGO_BRANCA).trim().resize({ width: 640 }).webp({ quality: 90, alphaQuality: 100 }).toBuffer();
 
 async function get(path) {
   const res = await fetch(SRC + path, { headers: { "User-Agent": "Mozilla/5.0" } });
@@ -71,7 +80,7 @@ const THEME = `
 /* correção (já existia no Lovable): botão "Download the form to draft offline (PDF…)"
    não quebrava linha e deixava a página mais larga que o celular */
 @media (max-width:640px){.inline-flex.whitespace-nowrap{white-space:normal;max-width:100%;height:auto;min-height:2.5rem;text-align:center}}
-.coalizao-simbolo{display:inline-block;width:1.6em;height:1.6em;margin-right:.45em;vertical-align:-.45em;object-fit:contain}
+.coalizao-logo-neg{display:inline-block;height:2.4em;width:auto;vertical-align:middle}
 .coalizao-logo{display:block;margin:0 auto;width:min(340px,80%);height:auto;background:#f8f5ee;padding:18px 26px;border-radius:16px}
 `;
 
@@ -117,11 +126,20 @@ async function main() {
   // Fontes do Google → mesmas fontes auto-hospedadas do site (font-src 'self')
   html = html.replace(/href="https:\/\/fonts\.googleapis\.com\/css2\?[^"]+"/, 'href="/assets/css/fonts.css"');
 
-  // Logo provisória → símbolo oficial (topo, apresentação, rodapé) e logo completa (seção "Hosted by")
-  const simboloHtml = `<img src="${SIMBOLO}" alt="" aria-hidden="true" class="coalizao-simbolo"/>`;
-  html = replaceExactly(html, "🪸 <!-- -->", simboloHtml, 3, "HTML: logo provisória");
+  // Logo provisória (emoji + nome em texto) → logo oficial negativo (topo, hero, rodapé)
+  // e logo colorido completo (seção "Hosted by")
+  writeFileSync(`${OUT}/assets/logo-coalizao-negativa.webp`, await logoNegativo());
+  html = replaceExactly(html, "🪸 <!-- -->Coalizão Corais do Brasil",
+    `<img src="${LOGO_NEG}" alt="Coalizão Corais do Brasil" class="coalizao-logo-neg"/>`, 3, "HTML: logo provisória");
   html = replaceOnce(html, '<div class="text-6xl" aria-hidden="true">🪸</div>',
     `<div class="text-6xl" aria-hidden="true"><img src="${LOGO}" alt="" class="coalizao-logo"/></div>`, "HTML: logo grande");
+
+  // "Last updated: [DATE]" (marcador não preenchido no Lovable) → data desta
+  // importação, no formato de cada idioma ("8 Nov 2026" / "8 nov 2026", como o resto da página)
+  const hoje = new Date();
+  const dataEn = `${hoje.getDate()} ${["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][hoje.getMonth()]} ${hoje.getFullYear()}`;
+  const dataPt = `${hoje.getDate()} ${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][hoje.getMonth()]} ${hoje.getFullYear()}`;
+  html = replaceExactly(html, "[DATE]", dataEn, 2, "HTML: Last updated");
 
   // --- JS / CSS ---------------------------------------------------------------
   for (const [path, original] of files) {
@@ -134,11 +152,16 @@ async function main() {
         body = replaceOnce(body, "e.update({basepath:``", `e.update({basepath:\`${BASE}\``, "JS: basepath do roteador");
       }
       if (body.includes("🪸")) {
-        const img = `(0,k.jsx)(\`img\`,{src:\`${SIMBOLO}\`,alt:\`\`,"aria-hidden":!0,className:\`coalizao-simbolo\`})`;
-        body = replaceExactly(body, "[`🪸 `,j.HOST_NAME]", `[${img},j.HOST_NAME]`, 3, "JS: logo provisória");
+        const img = `(0,k.jsx)(\`img\`,{src:\`${LOGO_NEG}\`,alt:j.HOST_NAME,className:\`coalizao-logo-neg\`})`;
+        body = replaceExactly(body, "[`🪸 `,j.HOST_NAME]", `[${img}]`, 3, "JS: logo provisória");
         body = replaceOnce(body, '"aria-hidden":!0,children:`🪸`}',
           `"aria-hidden":!0,children:(0,k.jsx)(\`img\`,{src:\`${LOGO}\`,alt:\`\`,className:\`coalizao-logo\`})}`, "JS: logo grande");
         if (body.includes("🪸")) throw new Error("JS: sobrou emoji de logo provisória");
+      }
+      if (body.includes("LAST_UPDATED:`[DATE]`")) {
+        body = replaceOnce(body, "updated:`Last updated`", `updated:\`Last updated\`,updatedDate:\`${dataEn}\``, "JS: data EN");
+        body = replaceOnce(body, "updated:`Última atualização`", `updated:\`Última atualização\`,updatedDate:\`${dataPt}\``, "JS: data PT");
+        body = replaceExactly(body, "[e.venue.updated,`: `,j.LAST_UPDATED", "[e.venue.updated,`: `,e.venue.updatedDate", 2, "JS: Last updated");
       }
     } else {
       body += THEME;
