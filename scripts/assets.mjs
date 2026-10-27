@@ -62,7 +62,8 @@ const MANIFEST = [
   // Parceiros (logos oficiais baixados dos sites de cada organização)
   ["parceiro-fgb", join(PARTNERS, "fgb-logo2.png"), 346],
   ["parceiro-wwf", join(PARTNERS, "wwf-logo.png"), 186],
-  ["parceiro-bloom", join(PARTNERS, "bloom-prancheta1.png"), 540],
+  // Bloom: logo novo enviado pelo Shawã em 2026-10-27 (Drive 1KVj1Rk4nzCPQpFifZODCdnT_pwlH6AA2), versionado em brand/parceiros/
+  ["parceiro-bloom", BRAND("parceiros/bloom.png"), 540],
 ];
 
 // Faixas que encostam no bloco seguinte: a base precisa ser opaca. O trim às vezes

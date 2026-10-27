@@ -24,3 +24,14 @@
 @media (max-width:640px){.inline-flex.whitespace-nowrap{white-space:normal;max-width:100%;height:auto;min-height:2.5rem;text-align:center}}
 .coalizao-logo-neg{display:inline-block;height:2.4em;width:auto;vertical-align:middle}
 .coalizao-logo{display:block;margin:0 auto;width:min(340px,80%);height:auto;background:#f8f5ee;padding:18px 26px;border-radius:16px}
+/* logos do evento (hero) e faixa Official Special Event / Lead Partners (antes do rodapé) */
+.od-eventos{display:inline-flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:28px;padding:10px 18px;background:#fff;border-radius:16px;box-shadow:var(--shadow-soft)}
+.od-eventos img{width:calc(var(--w)*.8px);height:calc(var(--h)*.8px)}
+.od-faixa{background:#fff;color:var(--abyss);border-top:1px solid var(--border)}
+.od-faixa__in{max-width:80rem;margin:0 auto;padding:48px 20px 36px;display:grid;grid-template-columns:auto 1fr;gap:32px 56px;align-items:start}
+.od-rotulo{margin:0 0 18px;font-family:var(--font-display);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--lagoon-deep)}
+.od-logos{display:flex;flex-wrap:wrap;align-items:center;gap:22px 28px}
+.od-logos img{width:calc(var(--w)*1px);height:calc(var(--h)*1px)}
+.od-onda{color:#fff}
+@media (max-width:900px){.od-faixa__in{grid-template-columns:1fr}}
+@media (max-width:640px){.od-eventos img{width:calc(var(--w)*.68px);height:calc(var(--h)*.68px)}.od-logos{gap:18px 26px}.od-logos img{width:calc(var(--w)*.8px);height:calc(var(--h)*.8px)}}
