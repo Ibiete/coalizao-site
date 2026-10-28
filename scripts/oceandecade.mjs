@@ -112,6 +112,45 @@ const faixa = (m) => el("div", { className: "od-faixa" },
       el("p", { className: "od-rotulo" }, ["Lead Partners", "Parceiros Líderes"]),
       el("div", { className: "od-logos" }, ...PARCEIROS.map(([n, a]) => img(n, a, m[n]))))));
 
+// Prazo das propostas: 8 → 22 nov 2026 (pedido do Shawã, 2026-10-28). A frase dos
+// Side Events é outra chamada da Conferência e fica como está. Se o Lovable já
+// estiver com a data nova, nada é trocado.
+const SIDE_EVENTS = ["also closing 8 Nov 2026", "que também encerra em 8 nov 2026"];
+function ajustaPrazo(text) {
+  SIDE_EVENTS.forEach((f, i) => { text = text.split(f).join(`\u0001SIDE${i}\u0001`); });
+  text = text
+    .replace(/(?<!\d)8 Nov\b/g, "22 Nov").replace(/(?<!\d)8 nov\b/g, "22 nov")
+    .replace(/(?<!\d)8 November/g, "22 November").replace(/(?<!\d)8 de novembro/g, "22 de novembro")
+    .replaceAll("2026-11-08T23:59:00Z", "2026-11-22T23:59:00Z").replaceAll("2026-11-09T00:00:00Z", "2026-11-23T00:00:00Z");
+  SIDE_EVENTS.forEach((f, i) => { text = text.split(`\u0001SIDE${i}\u0001`).join(f); });
+  return text;
+}
+
+// Formulário "Talk to us": em vez de só abrir o app de e-mail (mailto), envia para o
+// NAIIAN ONE (tenant Bloom › Formulários, fonte oceandecade-contato), que cria o
+// contato no CRM (lista + tag + follow-up) e manda as respostas por e-mail para
+// coalizaocoraisdobrasil@gmail.com. Origem liberada no CORS (tenant_web_properties).
+const FORM_ENDPOINT = "https://painel.bloomocean.com.br/api/forms/oceandecade-contato/submit";
+const TEXTOS_FORM = {
+  en: {
+    send: ["Open in my email app", "Send message"],
+    note: ["This only opens your email app. It is NOT your session application; please apply on the official form.",
+      "Your message goes to the Coalition team. It is NOT your session application; please apply on the official form."],
+    extra: "sent:`Thank you! Your message was sent to the Coalition.`,failed:`We couldn't send your message. Please try again in a moment.`,sending:`Sending…`",
+  },
+  pt: {
+    send: ["Abrir no meu app de e-mail", "Enviar mensagem"],
+    note: ["Isto apenas abre seu app de e-mail. NÃO é a sua inscrição de sessão; inscreva-se no formulário oficial.",
+      "Sua mensagem vai para a equipe da Coalizão. NÃO é a sua inscrição de sessão; inscreva-se no formulário oficial."],
+    extra: "sent:`Obrigado! Sua mensagem foi enviada para a Coalizão.`,failed:`Não foi possível enviar sua mensagem. Tente novamente em instantes.`,sending:`Enviando…`",
+  },
+};
+// Substitui o mailto do handler de envio. Chaves do payload em português: viram as
+// linhas do e-mail e do histórico de submissões no painel (name/email/message são
+// os campos que o NAIIAN ONE usa para criar o contato).
+const MAILTO = "let r=`${t.name}: ${n.name}\\n${t.org}: ${n.org}\\n${t.country}: ${n.country}\\n${t.email}: ${n.email}\\n${t.lookingLabel}: ${n.partners?t.yes:t.no}\\n\\n${n.message}`;window.location.href=`mailto:${j.HOST_EMAIL}?subject=${encodeURIComponent(`${t.subject} ${n.org}`)}&body=${encodeURIComponent(r)}`,b.success(t.opened)}";
+const ENVIO = "if(window.__odEnviando)return;window.__odEnviando=!0;let s=b.loading(t.sending);fetch(`" + FORM_ENDPOINT + "`,{method:`POST`,headers:{\"Content-Type\":`application/json`},body:JSON.stringify({name:n.name.trim(),email:n.email.trim(),\"Organização\":n.org.trim(),\"País\":n.country.trim(),\"Procura co-organizadores/parceiros\":n.partners?`Sim`:`Não`,message:n.message.trim(),\"Idioma da página\":document.documentElement.lang,\"Página\":location.href})}).then(e=>{if(!e.ok)throw Error(`HTTP ${e.status}`);r({name:``,org:``,country:``,email:``,message:``,partners:!1}),b.success(t.sent,{id:s})}).catch(e=>{console.error(`Falha no envio do formulário:`,e),b.error(t.failed,{id:s})}).finally(()=>{window.__odEnviando=!1})}";
+
 async function get(path) {
   const res = await fetch(SRC + path, { headers: { "User-Agent": "Mozilla/5.0" } });
   if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
@@ -244,6 +283,10 @@ async function main() {
   const dataPt = `${hoje.getDate()} ${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][hoje.getMonth()]} ${hoje.getFullYear()}`;
   html = replaceExactly(html, "[DATE]", dataEn, 2, "HTML: Last updated");
 
+  html = ajustaPrazo(html);
+  html = replaceOnce(html, `>${TEXTOS_FORM.en.send[0]}<`, `>${TEXTOS_FORM.en.send[1]}<`, "HTML: botão do formulário");
+  html = replaceOnce(html, TEXTOS_FORM.en.note[0], TEXTOS_FORM.en.note[1], "HTML: nota do formulário");
+
   // --- JS / CSS ---------------------------------------------------------------
   for (const [path, original] of files) {
     let body = original;
@@ -251,6 +294,15 @@ async function main() {
       body = body.split(heroRemote).join(`${BASE}/assets/hero-reef.jpg`);
       body = body.split('"/assets/').join(`"${BASE}/assets/`).split("`/assets/").join(`\`${BASE}/assets/`);
       body = body.replace(/https:\/\/fonts\.googleapis\.com\/css2\?[^"`']+/g, "/assets/css/fonts.css");
+      body = ajustaPrazo(body);
+      if (body.includes("window.location.href=`mailto:${j.HOST_EMAIL}")) {
+        body = replaceOnce(body, MAILTO, ENVIO, "JS: envio do formulário");
+        for (const lang of ["en", "pt"]) {
+          const tx = TEXTOS_FORM[lang];
+          body = replaceOnce(body, `send:\`${tx.send[0]}\``, `send:\`${tx.send[1]}\``, `JS: botão ${lang}`);
+          body = replaceOnce(body, `note:\`${tx.note[0]}\``, `note:\`${tx.note[1]}\`,${tx.extra}`, `JS: nota ${lang}`);
+        }
+      }
       if (body.includes("e.update({basepath:``")) {
         body = replaceOnce(body, "e.update({basepath:``", `e.update({basepath:\`${BASE}\``, "JS: basepath do roteador");
       }
@@ -284,7 +336,7 @@ async function main() {
     // O parser de HTML troca NUL por U+FFFD antes de o navegador calcular o hash
     // (o estado serializado do TanStack usa "__root__\0" como id).
     .map(([, code]) => `'sha256-${createHash("sha256").update(code.replaceAll("\u0000", "�")).digest("base64")}'`);
-  const csp = `default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' ${hashes.join(" ")}; font-src 'self'; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'`;
+  const csp = `default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' ${hashes.join(" ")}; font-src 'self'; connect-src 'self' https://painel.bloomocean.com.br; frame-ancestors 'self'; base-uri 'self'; form-action 'self'`;
   const confPath = `${ROOT}nginx.conf`;
   const conf = readFileSync(confPath, "utf8");
   const updated = conf.replace(/(# >>> oceandecade-csp[^\n]*\n)[\s\S]*?(\n\s*# <<< oceandecade-csp)/g,
