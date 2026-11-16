@@ -308,6 +308,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .site-footer__contacts .ico { color: var(--navy); width: 20px; height: 20px; }
 .site-footer__contacts a { text-decoration: none; word-break: break-word; }
 .site-footer__copy { font-size: 0.88rem; margin: 0; }
+/* Selo NAIIAN ONE — regra fixa desde 16/11/2026 */
+.site-footer__naiian { font-size: 0.78rem; margin: 6px 0 0; color: var(--muted); }
+.site-footer__naiian a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- página legal ---------- */
 .legal h2 { font-size: 1.4rem; margin: 32px 0 10px; }

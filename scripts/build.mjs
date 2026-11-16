@@ -126,6 +126,7 @@ function footer(c, { home = true } = {}) {
         <li>${icon.instagram}<a href="${c.contact.instagramUrl}" target="_blank" rel="noopener">${esc(c.contact.instagram)}</a></li>
       </ul>
       <p class="site-footer__copy">${esc(f.copyright)}</p>
+      <p class="site-footer__naiian">Site gerenciado por <a href="https://naiian.org" target="_blank" rel="noopener">NAIIAN ONE</a></p>
     </div>
   </div>
   ${img("recife-rodape", "", { cls: "site-footer__reef" })}
