@@ -33,11 +33,23 @@ for (const f of readdirSync(IMG_DIR).filter((f) => f.endsWith(".webp"))) {
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-function img(name, alt = "", { cls = "", eager = false } = {}) {
-  const d = dims[name];
+function img(name, alt = "", { cls = "", eager = false, size } = {}) {
+  const d = size ?? dims[name];
   if (!d) throw new Error(`imagem não encontrada: ${name}`);
   const a = alt ? `alt="${esc(alt)}"` : `alt="" aria-hidden="true"`;
   return `<img src="/assets/img/${name}.webp" width="${d[0]}" height="${d[1]}" ${a}${cls ? ` class="${cls}"` : ""} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+}
+
+// Logos da rede com peso visual parecido: mesma área aproximada (logo largo fica mais
+// baixo, quadrado mais alto), limitada à caixa do cartão (60px de altura, 190px de largura).
+function logoSize(name) {
+  const d = dims[name];
+  if (!d) throw new Error(`imagem não encontrada: ${name}`);
+  const ratio = d[0] / d[1];
+  let h = Math.min(60, Math.sqrt(6400 / ratio));
+  let w = h * ratio;
+  if (w > 190) { w = 190; h = w / ratio; }
+  return [Math.round(w), Math.round(h)];
 }
 
 // Foto real em faixa larga (srcset 960/1920). Legenda + crédito do fotógrafo sempre visíveis.
@@ -355,7 +367,7 @@ ${photo("foto-cardume", c.photos.cardume)}
     <div class="partners">
       ${partnerRows.map((cat) => `<div class="partners__row">
         <h3 class="partners__cat">${esc(cat.title)}</h3>
-        <ul class="partners__logos">${cat.items.filter((it) => !it.placeholder).map((it) => `<li class="logo-card">${img(it.logo, it.name, { cls: "logo-card__img" })}${it.showName ? `<span class="logo-card__name" aria-hidden="true">${esc(it.name)}</span>` : ""}</li>`).join("")}</ul>
+        <ul class="partners__logos${cat.fit ? " partners__logos--fit" : ""}">${cat.items.filter((it) => !it.placeholder).map((it) => `<li class="logo-card">${img(it.logo, it.name, cat.fit ? { cls: "logo-card__fit", size: logoSize(it.logo) } : { cls: "logo-card__img" })}${it.showName ? `<span class="logo-card__name" aria-hidden="true">${esc(it.name)}</span>` : ""}</li>`).join("")}</ul>
       </div>`).join("\n      ")}
     </div>
     <div class="join-band">

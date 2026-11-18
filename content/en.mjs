@@ -1,3 +1,4 @@
+import { REDE } from "./rede.mjs";
 // EN content — transcribed from "Brazilian_Coral_Reef_Coalition_Full_Scope_EN"
 // (Drive, 17/10/2026). Same structure as pt.mjs.
 export default {
@@ -215,7 +216,7 @@ export default {
       ] },
       { title: "Strategic-Deliberative Committee", items: [{ placeholder: "[To be confirmed]" }, { placeholder: "[To be confirmed]" }] },
       { title: "Executive Secretariat", items: [{ logo: "parceiro-bloom", name: "Bloom Ocean" }] },
-      { title: "Network organizations", items: Array.from({ length: 8 }, () => ({ placeholder: "[logo to be confirmed]" })) },
+      { title: "Network organizations", fit: true, items: REDE.map(({ logo, name, nameEn }) => ({ logo, name: nameEn ?? name })) },
     ],
     ctaText: "Does your organization care for coral reefs?",
     ctaHighlight: "Join the Coalition.",

@@ -1,3 +1,4 @@
+import { REDE } from "./rede.mjs";
 // Conteúdo PT — transcrito do documento "Coalizao_Corais_Escopo_Completo_PT"
 // (Drive, 17/10/2026). Títulos em partes: { t: texto, c: "coral"|"yellow" }
 // seguem a divisão de cores das imagens de referência de cada bloco.
@@ -216,7 +217,7 @@ export default {
       ] },
       { title: "Comitê Estratégico-Deliberativo", items: [{ placeholder: "[A confirmar]" }, { placeholder: "[A confirmar]" }] },
       { title: "Secretaria Executiva", items: [{ logo: "parceiro-bloom", name: "Bloom Ocean" }] },
-      { title: "Organizações da rede", items: Array.from({ length: 8 }, () => ({ placeholder: "[logo a confirmar]" })) },
+      { title: "Organizações da rede", fit: true, items: REDE.map(({ logo, name }) => ({ logo, name })) },
     ],
     ctaText: "Sua organização cuida dos recifes de coral?",
     ctaHighlight: "Junte-se à Coalizão.",

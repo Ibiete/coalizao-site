@@ -113,17 +113,13 @@ const faixa = (m) => el("div", { className: "od-faixa" },
       el("div", { className: "od-logos" }, ...PARCEIROS.map(([n, a]) => img(n, a, m[n]))))));
 
 // Prazo das propostas: 8 → 22 nov 2026 (pedido do Shawã, 2026-10-28). A frase dos
-// Side Events é outra chamada da Conferência e fica como está. Se o Lovable já
-// estiver com a data nova, nada é trocado.
-const SIDE_EVENTS = ["also closing 8 Nov 2026", "que também encerra em 8 nov 2026"];
+// Side Events ("also closing…"/"que também encerra em…") também passou a 22 nov
+// (pedido do Shawã, 2026-11-18). Se o Lovable já estiver com a data nova, nada é trocado.
 function ajustaPrazo(text) {
-  SIDE_EVENTS.forEach((f, i) => { text = text.split(f).join(`\u0001SIDE${i}\u0001`); });
-  text = text
+  return text
     .replace(/(?<!\d)8 Nov\b/g, "22 Nov").replace(/(?<!\d)8 nov\b/g, "22 nov")
     .replace(/(?<!\d)8 November/g, "22 November").replace(/(?<!\d)8 de novembro/g, "22 de novembro")
     .replaceAll("2026-11-08T23:59:00Z", "2026-11-22T23:59:00Z").replaceAll("2026-11-09T00:00:00Z", "2026-11-23T00:00:00Z");
-  SIDE_EVENTS.forEach((f, i) => { text = text.split(`\u0001SIDE${i}\u0001`).join(f); });
-  return text;
 }
 
 // Formulário "Talk to us": em vez de só abrir o app de e-mail (mailto), envia para o

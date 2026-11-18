@@ -64,6 +64,11 @@ const MANIFEST = [
   ["parceiro-wwf", join(PARTNERS, "wwf-logo.png"), 186],
   // Bloom: logo novo enviado pelo Shawã em 2026-10-27 (Drive 1KVj1Rk4nzCPQpFifZODCdnT_pwlH6AA2), versionado em brand/parceiros/
   ["parceiro-bloom", BRAND("parceiros/bloom.png"), 540],
+  // Organizações da rede (content/rede.mjs). Exibidos a no máximo 190x48 → 400px de largura cobre telas 2x
+  ...["aquario", "biofabrica-de-corais", "conservacao-internacional", "fest", "fiocruz", "funbio", "icrs", "inpact",
+    "integramar", "ircos", "projeto-conservacao-recifal", "promar", "reefbank", "ufpe", "yande"]
+    .map((n) => [`rede-${n}`, BRAND(`parceiros/rede/${n}.${n === "ufpe" ? "jpg" : "png"}`), 400]),
+  ["rede-mulheres-pescadoras", BRAND("parceiros/rede/rede-mulheres-pescadoras.png"), 400],
 ];
 
 // Faixas que encostam no bloco seguinte: a base precisa ser opaca. O trim às vezes
@@ -94,6 +99,10 @@ for (const [name, src, width] of MANIFEST) {
   // posicionamento e o tamanho controlados só pelo CSS. Fotos (sem alpha) ficam como estão.
   const { hasAlpha } = await sharp(src).metadata();
   let base = hasAlpha ? await sharp(src).trim({ threshold: 1 }).png().toBuffer() : src;
+  // Logos da rede: alguns trazem margem branca opaca (JPG da UFPE, quadro branco do AquaRio) → corta também
+  // (o cartão é branco, então achatar sobre branco antes não muda nada na tela)
+  if (name.startsWith("rede-")) base = await sharp(await sharp(base).flatten({ background: "#ffffff" }).png().toBuffer())
+    .trim({ background: "#ffffff", threshold: 12 }).png().toBuffer();
   if (SOLID_BOTTOM.has(name)) base = await cropTransparentBottom(base);
   const info = await sharp(base)
     .resize({ width, withoutEnlargement: true })
